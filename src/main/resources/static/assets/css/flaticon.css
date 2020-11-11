@@ -1,0 +1,58 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 23/09/2020 12:42
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("../fonts/Flaticon.eot");
+  src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/Flaticon.woff2") format("woff2"),
+       url("../fonts/Flaticon.woff") format("woff"),
+       url("../fonts/Flaticon.ttf") format("truetype"),
+       url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+    font-family: Flaticon;
+    font-style: normal;
+}
+
+.flaticon-facebook:before { content: "\f100"; }
+.flaticon-twitter:before { content: "\f101"; }
+.flaticon-linkedin-letters:before { content: "\f102"; }
+.flaticon-pinterest:before { content: "\f103"; }
+.flaticon-instagram:before { content: "\f104"; }
+.flaticon-analytics:before { content: "\f105"; }
+.flaticon-analytics-1:before { content: "\f106"; }
+.flaticon-startup:before { content: "\f107"; }
+.flaticon-competition:before { content: "\f108"; }
+.flaticon-admin:before { content: "\f109"; }
+.flaticon-speed:before { content: "\f10a"; }
+.flaticon-happy:before { content: "\f10b"; }
+.flaticon-logout:before { content: "\f10c"; }
+.flaticon-left-arrow:before { content: "\f10d"; }
+.flaticon-right-arrow:before { content: "\f10e"; }
+.flaticon-home:before { content: "\f10f"; }
+.flaticon-telephone:before { content: "\f110"; }
+.flaticon-email:before { content: "\f111"; }
+.flaticon-quote:before { content: "\f112"; }
+.flaticon-play:before { content: "\f113"; }
+.flaticon-chevron:before { content: "\f114"; }
+.flaticon-loupe:before { content: "\f115"; }
+.flaticon-search:before { content: "\f116"; }
+.flaticon-searching:before { content: "\f117"; }
+.flaticon-plus:before { content: "\f118"; }
+.flaticon-add:before { content: "\f119"; }
+.flaticon-placeholder:before { content: "\f11a"; }
+.flaticon-pin:before { content: "\f11b"; }

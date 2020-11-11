@@ -1,0 +1,638 @@
+/*** 
+====================================================================
+  Main Header style
+====================================================================
+***/
+.header-light .main-menu .navigation > li > a {
+    color: #243E63;
+}
+
+.header-light .main-menu .navigation > li:hover > a,
+.header-light .main-menu .navigation > li.current > a {
+    border-bottom: 2px solid #635AF2;
+}
+
+.header-light .main-menu .navbar-header .navbar-toggle .icon-bar {
+    background: #243E63;
+}
+
+/* ================================  Start All css     ================================= */
+.main-header {
+    position: absolute;
+    left: 0px;
+    /*top: 35px;*/
+    z-index: 999;
+    width: 100%;
+}
+
+.header-upper {
+    position: relative;
+    z-index: 5;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+}
+
+.logo-outer {
+    position: relative;
+    z-index: 25;
+}
+
+.main-menu .navigation > li {
+    position: relative;
+    float: left;
+}
+
+.main-menu .navigation > li:last-child::after {
+    display: none;
+}
+
+.main-menu .navigation > li > a {
+    color: #1C00AF;
+    display: block;
+    padding: 5px 0;
+    font-weight: 600;
+    margin: 18px 24px;
+    position: relative;
+    text-transform: capitalize;
+    border-bottom: 3px solid transparent;
+    font-family: 'Poppins', sans-serif;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    opacity: 1;
+}
+
+.main-menu .navigation > li:last-child > a {
+   margin-right: 0;
+}
+
+.main-menu .navigation > li:hover > a,
+.main-menu .navigation > li.current > a,
+.main-menu .navigation > li.current-menu-item > a {
+    opacity: 1;
+}
+
+.main-menu .navigation > li:hover > a:after {
+    opacity: 1;
+}
+
+.main-menu .navigation > li > ul {
+    position: absolute;
+    right: auto;
+    top: 100%;
+    width: 204px;
+    border-radius: 4px;
+    padding: 7px 0;
+    z-index: 100;
+    display: none;
+    background: #ffffff;
+    -webkit-box-shadow: 0px 30px 30px rgba(115, 117, 165, 0.07);
+    box-shadow: 0px 30px 30px rgba(115, 117, 165, 0.07);
+}
+
+.main-menu .navigation > li > ul > li {
+    position: relative;
+    width: 100%;
+}
+
+.main-menu .navigation > li > ul > li:last-child {
+    border-bottom: none;
+}
+
+.main-menu .navigation > li > ul > li > a {
+    position: relative;
+    display: block;
+    padding: 7px 32px;
+    color: #243E63;
+    text-align: left;
+    padding-right: 0px !important;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+
+.main-menu .navigation > li > ul > li > a:hover {
+    color: #1C00AF;
+}
+
+.main-menu .navigation > li > ul > li ul {
+    position: absolute;
+    left: 100%;
+    top: 0%;
+    width: 250px;
+    z-index: 100;
+    display: none;
+    padding: 7px 0;
+    border-radius: 4px;
+    background: #ffffff;
+    -webkit-box-shadow: 0px 30px 30px rgba(115, 117, 165, 0.07);
+    box-shadow: 0px 30px 30px rgba(115, 117, 165, 0.07);
+}
+
+.main-menu .navigation > li > ul > li > ul:before {
+    position: absolute;
+    content: '';
+    right: 100%;
+    top: 0px;
+    width: 20px;
+    height: 100%;
+}
+
+.main-menu .navigation > li > ul > li > ul li {
+    position: relative;
+    width: 100%;
+    padding: 0;
+}
+
+.main-menu .navigation > li > ul > li > ul li:last-child {
+    border-bottom: none;
+}
+
+.main-menu .navigation > li > ul > li > ul > li a {
+    position: relative;
+    display: block;
+    padding: 7px 32px;
+    line-height: 24px;
+    font-weight: 400;
+    text-align: left;
+    padding-right: 0px !important;
+    text-transform: capitalize;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+}
+
+.main-menu .navigation > li > ul > li > ul > li a:hover {
+    color: #F82462;
+}
+
+.main-menu .navigation > li.dropdown:hover > ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+.main-menu .navigation li > ul > li.dropdown:hover ul {
+    visibility: visible;
+    opacity: 1;
+    left: 100%;
+    top: 0%;
+}
+
+.main-menu .navbar-collapse ul li.dropdown .dropdown-btn {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 50px;
+    height: 43px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 16px;
+    line-height: 43px;
+    color: #243E63;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.main-menu .navbar-collapse > ul > li.dropdown > .dropdown-btn {
+    display: none;
+}
+
+.navbar-header {
+    display: none;
+}
+
+.main-menu .navigation > li:hover > a,
+.main-menu .navigation > li.current > a {
+    border-bottom: 3px solid #1C00AF;
+}
+
+
+/* ================================ End  All css     ================================= */
+
+
+
+/* ==============================Start Sticky Header css ==================================*/
+
+.main-header.fixed-header {
+    position: fixed;
+    top: -100px;
+    background: #FFFFFF;
+    transform: translateY(100px);
+    transition: transform .85s cubic-bezier(0.88, 0.06, 0.64, 0.99);
+    box-shadow: 0px 30px 30px rgba(115, 117, 165, 0.07);
+}
+
+.fixed-header .main-menu {
+    padding-top: 0px;
+}
+
+.main-menu .navigation > li:after {
+    display: none;
+}
+
+/* ==============================End Sticky Header css ==================================*/
+
+
+/* Megamenu */
+.main-header .header-upper .upper-right {
+    position: initial;
+}
+
+.main-header .nav-outer {
+    position: inherit;
+}
+
+.main-menu {
+    position: inherit;
+}
+
+.main-menu .navigation {
+    position: inherit;
+}
+
+.main-menu .navigation > li {
+    position: inherit;
+}
+
+.main-menu .navigation .megamenu {
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    width: 100%;
+    padding: 35px 0px;
+    z-index: 100;
+    display: none;
+    background: #ffffff;
+    box-shadow: 0px 31px 85px rgba(3, 4, 29, 0.15);
+}
+
+.main-menu .navigation > li.dropdown:hover .megamenu {
+    visibility: visible;
+    opacity: 1;
+}
+
+.megamenu .mega-title {
+    border-bottom: 1px solid #ddd;
+    margin: 10px 0 0;
+    padding-bottom: 15px;
+    text-transform: capitalize;
+    font-size: 18px;
+}
+
+.main-menu .navigation > li > .megamenu li {
+    position: relative;
+    width: 100%;
+}
+
+.main-menu .navigation > li > .megamenu li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    line-height: 24px;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: left;
+    padding-right: 0px !important;
+    text-transform: capitalize;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+}
+
+.main-menu .navigation > li > .megamenu li:last-child a {
+    border-bottom: none;
+}
+
+.main-menu .navigation > li > .megamenu li > a:hover {
+    color: #f82462;
+}
+
+/* home-megamenu */
+.home-megamenu a {
+    display: block;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 53px rgba(48, 48, 138, 0.09);
+}
+
+.home-megamenu a:hover {
+    box-shadow: 0px 0px 53px rgba(48, 48, 138, 0.13);
+}
+
+.home-megamenu a span {
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+.home-megamenu a span .demo-img {
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(46, 46, 154, 0.13);
+}
+
+.home-megamenu a span .mega-hover-dot {
+    position: absolute;
+    left: 2px;
+    top: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+}
+
+.home-megamenu a:hover span .mega-hover-dot {
+    opacity: 1;
+    visibility: visible;
+}
+
+.home-megamenu a span.text {
+    padding: 13px 0;
+    color: #000;
+    font-weight: 500;
+    transition: .4s;
+}
+
+.home-megamenu a:hover span.text {
+    color: #6259F1;
+}
+
+
+/*** 
+====================================================================
+   Start Main menu button style area
+====================================================================
+ ***/
+
+/* =============================== exta large ===================== */
+
+@media only screen and (min-width: 1200px) {
+    .main-menu .navbar-collapse > .navigation > li:first-child > a {
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .header-style .container-fliud {
+        padding: 0 15px
+    }
+}
+
+
+/* =============================== Tabe menu ===================== */
+/* ==================== Responsive css max-width: 992px   ===========================*/
+
+@media only screen and (max-width: 991px) {
+
+    /* ------Start  All css    ------= */
+    .main-menu {
+        float: left;
+    }
+
+    .sup-log {
+        margin-top: 0;
+        float: right;
+    }
+
+    .logo-center .main-menu {
+        position: absolute;
+        top: 50%;
+    }
+
+    .main-header {
+        top: 10px;
+        padding: 15px 0;
+    }
+
+    .logo-outer,
+    .fixed-header .logo-outer {
+        text-align: center;
+        margin: auto;
+    }
+
+    .main-menu .navigation {
+        margin: auto;
+    }
+
+
+    /* ------End  All css    ------= */
+
+
+    /* =============================== Mobile menu ===================== 
+================== Responsive css max-width: 767px   ===========================*/
+
+
+    /* ------Start  All css    ------= */
+    .main-menu .navigation > li > .megamenu .row {
+        margin: 0px;
+    }
+
+    .main-menu .navigation .megamenu {
+        position: relative;
+    }
+
+    .main-menu .navigation > li {
+        position: relative;
+    }
+
+    .main-menu .navbar-header {
+        position: relative;
+        display: block;
+        width: 100%;
+        z-index: 99;
+    }
+
+    .navbar-header .logo,
+    .navbar-header .fixed-logo {
+        float: left;
+        max-width: 150px;
+    }
+
+    .logo-outer {
+        display: none;
+    }
+
+    .header-upper .upper-right {
+        position: relative;
+        width: 100%;
+        padding-top: 0px;
+    }
+
+    .main-menu {
+        width: 100%;
+    }
+
+    .main-menu .navbar-header .navbar-toggle {
+        float: right;
+        cursor: pointer;
+        margin-top: 1px;
+        background: transparent;
+    }
+
+    .main-menu .navbar-header .navbar-toggle .icon-bar {
+        background: #222;
+        height: 3px;
+        width: 29px;
+        display: block;
+        margin: 7px 5px;
+    }
+
+    .fixed-header .main-menu .navbar-header .navbar-toggle .icon-bar {
+        background: #243E63;
+    }
+
+    .main-menu .collapse {
+        max-height: 325px;
+        overflow: auto;
+        float: none;
+        width: 100%;
+        padding: 0px 0px 0px;
+        border: none;
+        border-radius: 3px;
+    }
+
+    .main-menu .navbar-collapse > .navigation {
+        float: none !important;
+        margin-top: 25px;
+        width: 100% !important;
+        background: #fff;
+        border: 1px solid #ffffff;
+        border-top: none;
+    }
+
+    .main-menu .navbar-collapse > .navigation > li {
+        margin: 0px !important;
+        float: none !important;
+        width: 100%;
+    }
+
+    .main-menu .navigation > li > a,
+    .main-menu .navigation > li > ul:before {
+        border: none;
+    }
+
+    .main-menu .navbar-collapse > .navigation > li > a {
+        padding: 5px 10px !important;
+        border: none !important;
+    }
+
+    .main-menu .navigation li.dropdown > a:after,
+    .main-menu .navigation > li.dropdown > a:before,
+    .main-menu .navigation > li > ul > li > a::before,
+    .main-menu .navigation > li > ul > li > ul > li > a::before {
+        color: #ffffff !important;
+        right: 15px;
+        font-size: 16px;
+        display: none !important;
+    }
+
+    .main-menu .navbar-collapse > .navigation > li > ul,
+    .main-menu .navbar-collapse > .navigation > li > ul > li > ul {
+        position: relative;
+        border: none;
+        float: none;
+        visibility: visible;
+        opacity: 1;
+        display: none;
+        margin: 0px;
+        padding: 0px;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        width: 100%;
+        border-radius: 0px;
+        transition: none !important;
+        -webkit-transition: none !important;
+        -ms-transition: none !important;
+        -o-transition: none !important;
+        -moz-transition: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+
+    .main-menu .navbar-collapse > .navigation > li,
+    .main-menu .navbar-collapse > .navigation > li > ul > li,
+    .main-menu .navbar-collapse > .navigation > li > ul > li > ul > li {
+        border-top: 1px solid #f3f3f3 !important;
+        opacity: 1 !important;
+        top: 0px !important;
+        padding-top: 0;
+        padding-bottom: 0;
+        left: 0px !important;
+        visibility: visible !important;
+        border-bottom: none;
+    }
+
+    .main-menu .navbar-collapse > .navigation > li:first-child {
+        border: none;
+    }
+
+    .main-menu .navbar-collapse > .navigation > li > a,
+    .main-menu .navbar-collapse > .navigation > li > ul > li > a,
+    .main-menu .navbar-collapse > .navigation > li > ul > li > ul > li > a {
+        line-height: 22px;
+        color: #243E63;
+        text-align: left;
+        min-height: 0px;
+    }
+
+    .main-menu .navbar-collapse > .navigation > li > a:hover,
+    .main-menu .navbar-collapse > .navigation > li > a:active,
+    .main-menu .navbar-collapse > .navigation > li > a:focus {
+        /* background:#F82462; */
+    }
+
+    .main-menu .navbar-collapse > .navigation > li:hover > a,
+    .main-menu .navbar-collapse > .navigation > li > ul > li:hover > a,
+    .main-menu .navbar-collapse > .navigation > li > ul > li > ul > li:hover > a,
+    .main-menu .navbar-collapse > .navigation > li.current > a,
+    .main-menu .navbar-collapse > .navigation > li.current-menu-item > a {
+        color: #1C00AF;
+    }
+
+    .main-menu .navbar-collapse > .navigation li.dropdown .dropdown-btn {
+        display: block;
+        transform: rotate(90deg);
+    }
+
+    .main-menu .navbar-collapse > .navigation li.dropdown:after,
+    .main-menu .navigation > li > ul:before {
+        display: none !important;
+    }
+
+    .main-menu .navigation > li > a {
+        margin: 2px;
+        margin-bottom: 2px;
+    }
+
+    .header-inner {
+        padding: 25px 0;
+    }
+
+    .logo-center .main-menu {
+        position: relative;
+    }
+
+    .header-inner > .dg-header-right {
+        display: none;
+    }
+
+
+}
+
+
+/*** 
+====================================================================
+   End Main menu button style area
+====================================================================
+ ***/

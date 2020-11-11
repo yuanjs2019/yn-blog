@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuan.farmerwork.ynblog.mapper.BlogMapper">
+
+    <resultMap id="findSimpleMap" type="com.yuan.farmerwork.ynblog.domain.pojo.Blogs">
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="main_picture" jdbcType="VARCHAR" property="mainPicture"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="text_content" jdbcType="VARCHAR" property="textContent"/>
+        <result column="author" jdbcType="VARCHAR" property="author"/>
+        <result column="createTime" jdbcType="VARCHAR" property="createTime"/>
+        <result column="read_nums" jdbcType="BIGINT" property="readNums"/>
+        <result column="typeStr" jdbcType="CHAR" property="typeStr"/>
+    </resultMap>
+
+   <select id="findBlogsById" resultMap="findSimpleMap">
+       SELECT
+        a.title,
+        a.description,
+        a.main_picture,
+        a.author,
+        date_format(a.create_time, '%Y-%m-%d') createTime,
+        a.`type` typeStr,
+        a.text_content,
+        a.content
+       FROM blog a WHERE a.is_delete = 1 AND a.id =#{0}
+   </select>
+
+    <select id="findBlogList" resultMap="findSimpleMap">
+       SELECT
+        a.id,
+        a.title,
+        a.description,
+        a.main_picture,
+        a.author,
+        date_format(a.create_time, '%Y-%m-%d') createTime,
+        a.`type` typeStr,
+        d.read_nums
+       FROM blog a
+       LEFT JOIN yn_read_totall d  ON d.blog_id = a.id
+       WHERE a.is_delete = 1 ORDER BY a.id DESC
+   </select>
+
+    <select id="findBlogLaterList" resultType="com.yuan.farmerwork.ynblog.domain.pojo.Blogs">
+      SELECT id,title,main_picture mainPicture,date_format(create_time, '%Y-%m-%d') createTime,author
+      FROM blog  ORDER BY create_time DESC limit 0,5
+   </select>
+
+    <select id="findReadMoreList" resultType="com.yuan.farmerwork.ynblog.domain.pojo.Blogs">
+        SELECT a.id,a.title,a.main_picture mainPicture,date_format(a.create_time, '%Y-%m-%d') createTime
+      FROM blog a
+      LEFT JOIN yn_read_totall b  ON a.id = b.blog_id
+      ORDER BY b.read_nums DESC limit 0,5
+    </select>
+
+    <select id="findReadmList" resultType="com.yuan.farmerwork.ynblog.domain.pojo.Blogs">
+        SELECT a.id,a.title,b.read_nums readNums
+      FROM blog a
+      LEFT JOIN yn_read_totall b  ON a.id = b.blog_id
+      ORDER BY b.read_nums DESC limit 0,8
+    </select>
+
+
+    <select id="findBlogBytagCode" resultMap="findSimpleMap">
+     SELECT
+        a.id,
+        a.title,
+        a.description,
+        a.main_picture,
+        a.author,
+        date_format(a.create_time, '%Y-%m-%d') createTime,
+        a.type typeStr,
+        d.read_nums
+       FROM blog a
+       LEFT JOIN yn_blog_tag b  ON a.id = b.blog_id
+       LEFT JOIN yn_tag c  ON b.tag_id = c.id
+       LEFT JOIN yn_read_totall d  ON d.blog_id = a.id
+       WHERE a.is_delete = 1 AND c.tag_code =#{0}  ORDER BY a.id
+    </select>
+
+    <select id="findBlogByclassfCode" resultMap="findSimpleMap">
+     SELECT
+        a.id,
+        a.title,
+        a.description,
+        a.main_picture,
+        a.author,
+        date_format(a.create_time, '%Y-%m-%d') createTime,
+        a.`type` typeStr,
+        d.read_nums
+       FROM blog a
+       LEFT JOIN yn_read_totall d  ON d.blog_id = a.id
+       LEFT JOIN yn_blog_classify e  ON a.id = e.blog_id
+       LEFT JOIN yn_classify f  ON e.classify_id = f.id
+       WHERE a.is_delete = 1 AND f.classify_code =#{0}  ORDER BY a.id
+    </select>
+
+    <select id="findBlogByseriesCode" resultMap="findSimpleMap">
+     SELECT
+        a.id,
+        a.title,
+        a.description,
+        a.main_picture,
+        a.author,
+        date_format(a.create_time, '%Y-%m-%d') createTime,
+        a.`type` typeStr,
+        d.read_nums
+       FROM blog a
+       LEFT JOIN yn_read_totall d  ON d.blog_id = a.id
+       WHERE a.is_delete = 1 AND a.series_code =#{0}  ORDER BY a.id
+    </select>
+
+    <select id="findTagsByBlogId" resultType="com.yuan.farmerwork.ynblog.domain.pojo.TagsName">
+        SELECT b.tag_name tagsName,b.tag_code tagsCode FROM yn_blog_tag a
+        LEFT JOIN yn_tag b  ON a.tag_id = b.id WHERE a.blog_id =#{0}
+    </select>
+
+    <select id="findClssfyByBlogId" resultType="string">
+        SELECT b.classify_code FROM yn_blog_classify a
+        LEFT JOIN yn_classify b  ON a.classify_id = b.id WHERE a.blog_id =#{0}
+    </select>
+
+    <select id="searchBlogs" resultType="com.yuan.farmerwork.ynblog.domain.pojo.SearchBlog">
+        SELECT id, title, description FROM blog WHERE title like #{0}
+    </select>
+</mapper>

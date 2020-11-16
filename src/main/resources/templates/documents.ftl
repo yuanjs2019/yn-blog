@@ -80,13 +80,13 @@
 
 
 <div style="width:100%;padding-top:70px;">
-    <div class="ss-title"><i class="fa fa-database"></i>文档</div>
+    <div class="ss-title"><i class="fa fa-book"></i>文档</div>
 </div>
 <div class="home-background -no-max-width no-opacity">
-    <img src="${re.contextPath}/themes/img/banner.svg"/>
+    <img src="https://s4.aconvert.com/convert/p3r68-cdx67/av8ce-6l5fw.svg"/>
 </div>
 <div class="ss-layout-container">
-    <main class="ss-layout-main -noaside">
+    <main class="ss-layout-main">
         <div class="ss-list">
             <h2 class="list-title "><a>技术文档</a></h2>
             <div class="list">
@@ -303,6 +303,95 @@
             </div>
         </div>
     </main>
+    <aside class="ss-layout-aside">
+        <div class="ss-card">
+            <h2 class="card-title custom-card-title">
+                最新阅读
+            </h2>
+            <div class="card-content">
+                <ol class="posts-list list-space-sm list-unstyled">
+                    <#list blogLaterList as laterData>
+                        <#if laterData_index == 0>
+                            <li>
+                                <article class="post-overlay post-overlay-bottom post-overlay-floorfade post-overlay-xs">
+                                    <div class="cover-img"
+                                         style="background-image: url(${laterData.mainPicture})"></div>
+                                    <div class="post-text inverse-text">
+                                        <div class="post-text-wrap">
+                                            <div class="post-text-inner">
+                                                <h3 class="post-title typescale-1">
+                                                    ${laterData.title}
+                                                </h3>
+                                                <div class="post-meta">
+                                                    <span><i class="fa fa-user"> ${laterData.author}</i></span>
+                                                    <time class="time published">
+                                                        <i class="fa fa-calendar-o"> ${laterData.createTime}</i>
+                                                    </time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="${re.contextPath}/dtails/id/${laterData.id}" class="link-overlay"></a>
+                                    </div>
+                                </article>
+                            </li>
+                        </#if>
+                        <#if laterData_index !=0>
+                            <li>
+                                <article class="post post-horizontal post-horizontal-xxs">
+                                    <div class="post-thumb min-height-70">
+                                        <a href="#">
+                                            <img src="${laterData.mainPicture}" alt="" style="width: 80px;height: 80px">
+                                        </a>
+                                    </div>
+                                    <div class="post-text">
+                                        <h3 class="post-title typescale-0">
+                                            <a href="${re.contextPath}/dtails/id/${laterData.id}"> ${laterData.title}</a>
+                                        </h3>
+                                        <div class="post-meta">
+                                            <time class="time published">
+                                                <i class="fa fa-calendar-o"> ${laterData.createTime}</i>
+                                            </time>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+                        </#if>
+                    </#list>
+                </ol>
+            </div>
+        </div>
+        <div class="ss-card">
+            <h2 class="card-title custom-card-title">
+                热门文章
+            </h2>
+            <div class="card-content">
+                <ol class="posts-list list-space-sm list-unstyled">
+                    <#list readMoreList as readmore>
+                        <li>
+                            <article class="post post-horizontal post-horizontal-xxs">
+                                <div class="post-thumb min-height-70">
+                                    <a href="#">
+                                        <img src="${readmore.mainPicture}"
+                                             alt="" style="width: 80px;height: 80px">
+                                    </a>
+                                </div>
+                                <div class="post-text">
+                                    <h3 class="post-title typescale-0">
+                                        <a href="${re.contextPath}/dtails/id/${readmore.id}">${readmore.title}</a>
+                                    </h3>
+                                    <div class="post-meta">
+                                        <time class="time published">
+                                            <i class="fa fa-calendar-o">${readmore.createTime}</i>
+                                        </time>
+                                    </div>
+                                </div>
+                            </article>
+                        </li>
+                    </#list>
+                </ol>
+            </div>
+        </div>
+    </aside>
 </div>
 
 <footer class="ss-footer">

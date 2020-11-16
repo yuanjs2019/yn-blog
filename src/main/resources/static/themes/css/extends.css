@@ -347,7 +347,7 @@ a.post-cat-bg{
 }
 .document-detail .document-content{
     background: rgba(0,0,0,.9);
-    background: linear-gradient(0deg,#f1f2f4,#b0cbe0,#97a3cb);
+    background: linear-gradient(0deg,#f1f2f4, #83dce5, #4ee7f1);
     position: absolute;
     top: 0;
     left: 0;

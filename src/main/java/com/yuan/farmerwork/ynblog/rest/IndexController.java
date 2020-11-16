@@ -140,10 +140,14 @@ public class IndexController {
     }*/
 
 
-   /* @GetMapping("/documents")
-    public String documents() {
-        return "documents";
-    }*/
+    @GetMapping("/documents")
+    public ModelAndView documents(Map map) {
+        List<Blogs> blogLaterList = blogService.findBlogLaterList();
+        map.put("blogLaterList", blogLaterList);
+        List<Blogs> readMoreList = blogService.findReadMoreList();
+        map.put("readMoreList", readMoreList);
+        return new ModelAndView("documents", map);
+    }
 
     @GetMapping("/about")
     public String about() {

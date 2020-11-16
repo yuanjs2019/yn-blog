@@ -90,7 +90,7 @@
                             <i class="custom-icon"></i>
                             <a href="/doc/unaboot/chapter/unaboot/29" class="text">序言</a>
                         </li>
-                        <li class="open">
+                        <li class="">
                             <div class="wholerow"></div>
                             <i class="custom-icon caret fa fa-caret-right"></i>
                             <a href="/doc/unaboot/chapter/unaboot-v1.0" class="text">UnaBoot v1.0</a>
@@ -209,7 +209,7 @@
                             <i class="fa fa-align-justify"></i>
                         </a>
                     </div>
-                    <h1>序言</h1>
+                    <h1>序言rererr</h1>
                 </div>
                 <div class="article-body typo custom-typo editormd-html-preview editormd-preview-theme-dark">
                     adsdasdasdas

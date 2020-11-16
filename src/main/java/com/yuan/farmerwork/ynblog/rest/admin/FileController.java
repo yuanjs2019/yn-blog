@@ -33,6 +33,9 @@ public class FileController {
     @Value("${img.location}")
     private String folder;
 
+    @Value("${base.url}")
+    private String baseUrl;
+
     @PostMapping
     public FileInfo upload(HttpServletRequest request, @RequestParam(value = "editormd-image-file", required = false) MultipartFile file) throws Exception {
         log.info("【FileController】 fileName={},fileOrginNmae={},fileSize={}", file.getName(), file.getOriginalFilename(), file.getSize());
@@ -43,7 +46,8 @@ public class FileController {
         File localFile = new File(folder, newFileName);
         file.transferTo(localFile);
         log.info(localFile.getAbsolutePath());
-        return new FileInfo(1, "上传成功", request.getRequestURL().substring(0,request.getRequestURL().lastIndexOf("/"))+"/upload/"+newFileName);
+        //request.getRequestURL().substring(0,request.getRequestURL().lastIndexOf("/"))
+        return new FileInfo(1, "上传成功", baseUrl+"upload/"+newFileName);
     }
 
     @GetMapping("/{id}")

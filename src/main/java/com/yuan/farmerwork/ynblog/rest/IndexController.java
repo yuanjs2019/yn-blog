@@ -4,9 +4,7 @@ import com.baomidou.mybatisplus.extension.api.R;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.yuan.farmerwork.ynblog.domain.*;
-import com.yuan.farmerwork.ynblog.domain.pojo.Blogs;
-import com.yuan.farmerwork.ynblog.domain.pojo.ClassifiesBo;
-import com.yuan.farmerwork.ynblog.domain.pojo.ItemClassfy;
+import com.yuan.farmerwork.ynblog.domain.pojo.*;
 import com.yuan.farmerwork.ynblog.service.*;
 import javassist.ClassMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Controller
 public class IndexController {
@@ -106,29 +105,62 @@ public class IndexController {
         return new ModelAndView("configure", map);
     }
 
-    @GetMapping("/details")
+    /*
+     * 归档
+     */
+    @GetMapping("/pigeonhole")
+    public ModelAndView projects(Map map) {
+        List<PigeonholeData> pigeonholeData = blogService.guiDangSum();
+        Map<String, List<PigeonholeData>> rex = pigeonholeData.stream()
+                .collect(Collectors.groupingBy(PigeonholeData::getYearMonth));
+        List<OutPigeData> outPigeData = new ArrayList<>();
+        Set<Map.Entry<String, List<PigeonholeData>>> entrySet = rex.entrySet();
+        for (Map.Entry<String, List<PigeonholeData>> entry : entrySet) {
+            OutPigeData od = new OutPigeData();
+            String[] split = entry.getKey().split("-");
+            od.setYearMonth(Long.valueOf(split[0]+split[1]));
+            od.setPigeonholeData(entry.getValue());
+            outPigeData.add(od);
+        }
+        outPigeData = outPigeData
+                .stream()
+                .sorted(Comparator.comparing(OutPigeData::getYearMonth))
+                .collect(Collectors.toList());
+        map.put("pigeBlogs", outPigeData);
+        return new ModelAndView("pigeonhole", map);
+    }
+
+    /*@GetMapping("/details")
     public ModelAndView projects(Map map) {
         PageHelper.startPage(1, 2);
         List<Blog> blogList = blogService.list();
         PageInfo<Blog> blogPageInfo = new PageInfo<>(blogList);
         map.put("blog", blogPageInfo.getList().get(0));
         return new ModelAndView("details", map);
-    }
+    }*/
 
+
+   /* @GetMapping("/documents")
+    public String documents() {
+        return "documents";
+    }*/
 
     @GetMapping("/about")
     public String about() {
         return "about";
     }
-
+    @GetMapping("/doc")
+    public String doc() {
+        return "doc";
+    }
     @GetMapping("/projects")
     public ModelAndView blogDetails(Map map) {
         List<ItemClassfy> itemClassfies = new ArrayList<>();
         List<YnItems> ynItems = ynItemsService.list();
         Map<String, List<YnItems>> retrunItemMap = ynItems.stream()
                 .collect(Collectors.groupingBy(YnItems::getItemClassfyName));
-         retrunItemMap.entrySet().stream()
-                .map(x->{
+        retrunItemMap.entrySet().stream()
+                .map(x -> {
                     ItemClassfy itemClassfy = new ItemClassfy();
                     itemClassfy.setYnItems(x.getValue());
                     itemClassfy.setItemClassfyName(x.getKey());

@@ -34,6 +34,11 @@
                             <use xlink:href="#icon-ARROW"></use>
                         </svg>
                     </a>
+                    <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span>
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-ARROW"></use>
+                        </svg>
+                    </a>
                     <a class="" href="${re.contextPath}/about"> <span> 关于我 </span>
                         <svg class="icon" aria-hidden="true">
                             <use xlink:href="#icon-ARROW"></use>
@@ -46,6 +51,7 @@
             <div class="navbar-start">
                 <a class="navbar-item " href="${re.contextPath}/projects">项目</a>
                 <a class="navbar-item " href="${re.contextPath}/blog">博客</a>
+                <a class="navbar-item " href="${re.contextPath}/pigeonhole">归档</a>
                 <a class="navbar-item " href="${re.contextPath}/about">关于我</a>
             </div>
 

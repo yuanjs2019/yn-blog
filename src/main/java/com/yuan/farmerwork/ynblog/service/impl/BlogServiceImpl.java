@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.yuan.farmerwork.ynblog.domain.Blog;
 import com.yuan.farmerwork.ynblog.domain.pojo.Blogs;
+import com.yuan.farmerwork.ynblog.domain.pojo.PigeonholeData;
 import com.yuan.farmerwork.ynblog.domain.pojo.SearchBlog;
 import com.yuan.farmerwork.ynblog.domain.pojo.TagsName;
 import com.yuan.farmerwork.ynblog.mapper.BlogMapper;
@@ -89,5 +90,10 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public PageInfo<SearchBlog> searchBlogs(String keywords,Integer page) {
         PageHelper.startPage(page, 5);
         return new PageInfo<>(blogMapper.searchBlogs(keywords));
+    }
+
+    @Override
+    public List<PigeonholeData> guiDangSum() {
+        return blogMapper.guiDangSum();
     }
 }

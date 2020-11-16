@@ -3,6 +3,7 @@ package com.yuan.farmerwork.ynblog.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yuan.farmerwork.ynblog.domain.Blog;
 import com.yuan.farmerwork.ynblog.domain.pojo.Blogs;
+import com.yuan.farmerwork.ynblog.domain.pojo.PigeonholeData;
 import com.yuan.farmerwork.ynblog.domain.pojo.SearchBlog;
 import com.yuan.farmerwork.ynblog.domain.pojo.TagsName;
 import org.apache.ibatis.annotations.Mapper;
@@ -84,4 +85,10 @@ public interface BlogMapper extends BaseMapper<Blog> {
      * @return
      */
    List<SearchBlog> searchBlogs(String keywords);
+
+    /**
+     * 归档数据
+     * @return
+     */
+   List<PigeonholeData> guiDangSum();
 }

@@ -15,7 +15,7 @@
         <result column="typeStr" jdbcType="CHAR" property="typeStr"/>
     </resultMap>
 
-   <select id="findBlogsById" resultMap="findSimpleMap">
+    <select id="findBlogsById" resultMap="findSimpleMap">
        SELECT
         a.title,
         a.description,
@@ -61,7 +61,6 @@
       LEFT JOIN yn_read_totall b  ON a.id = b.blog_id
       ORDER BY b.read_nums DESC limit 0,8
     </select>
-
 
     <select id="findBlogBytagCode" resultMap="findSimpleMap">
      SELECT
@@ -125,4 +124,15 @@
     <select id="searchBlogs" resultType="com.yuan.farmerwork.ynblog.domain.pojo.SearchBlog">
         SELECT id, title, description FROM blog WHERE title like #{0}
     </select>
+
+    <select id="guiDangSum" resultType="com.yuan.farmerwork.ynblog.domain.pojo.PigeonholeData">
+      SELECT
+         id,
+         title,
+         CONCAT(`year`,'-',`month`) yearMonth,
+         date_format(create_time, '%Y-%m-%d') insertTime
+       FROM blog
+       WHERE is_delete = 1  ORDER BY create_time;
+    </select>
+
 </mapper>

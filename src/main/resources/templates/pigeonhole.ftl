@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
 <header class="ss-header">
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -58,7 +57,6 @@
                 <a class="navbar-item " href="${re.contextPath}/about">关于我</a>
             </div>
 
-
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div id="una-menu-search" class="navbar-search">
@@ -73,47 +71,40 @@
     </nav>
 </header>
 
-<div style="width:100%;padding-top:70px;">
-    <div class="ss-title"><i class="fa fa-tag"></i>标签 >${tagTitleName}</div>
-</div>
-<div class="home-background -no-max-width no-opacity">
-    <img src="${re.contextPath}/themes/img/cover-bg.png"/>
 
+<div style="width:100%;padding-top:70px;">
+    <div class="ss-title"><i class="fa fa-database"></i>归档</div>
+</div>
+
+<div class="home-background -no-max-width no-opacity">
+    <#-- <img src="${re.contextPath}/themes/img/banner.svg"/>-->
 </div>
 <div class="ss-layout-container">
     <main class="ss-layout-main -noaside">
-        <#list blogsList.list as blog>
-        <article class="ss-summary ss-card article">
-            <img src="${blog.mainPicture}" alt="cover"
-                 class="cover">
-            <div class="container">
-                <h2 class="title">
-                    <a href="${re.contextPath}/dtails/id/${blog.id}">${blog.title}</a>
-                </h2>
-                <div class="meta">
-                    <i class="fa fa-user"> ${blog.author}</i>
-                    <i class="fa fa-calendar-o"> ${blog.createTime}</i>
-                    <i class="fa fa-home"> ${blog.typeStr}</i>
-                    <i class="fa fa-eye"> ${blog.readNums}</i>
-                </div>
-                <div class="summary">${blog.description}</div>
-                <div class="tags">
-                    <#list blog.tagsLists as tagxx>
-                    <a class="tag" href="${re.contextPath}/tag/${tagxx.tagsCode}" target="_blank" rel="tag">${tagxx.tagsName}</a>
-                    </#list>
-                </div>
-            </div>
-        </article>
-        </#list>
-        <nav class="ss-pagination" data-total="${blogsList.total}" data-current="${blogsList.pageNum}">
-            <ul id="ul-list" class="list">
-                <a href="/blog/page/1"> <li class="item -active">1</li></a>
-                <a href="/blog/page/2"><li class="item"> 2 </li></a>
+        <div class="ss-archives">
+            <ul>
+                <#list pigeBlogs as pigexLists>
+                    <li class="archive-item">
+                        <h3 class="archive-title">
+                            ${pigexLists.pigeonholeData[0].yearMonth}
+                            <span class="archive-title-bg"></span>
+                        </h3>
+                        <#list pigexLists.pigeonholeData as pigex>
+                            <ul class="archive-posts">
+                                <li class="post-item">
+                                    <time class="time post-time"> ${pigex.insertTime}</time>
+                                    <a class="post-title"
+                                       href="${re.contextPath}/dtails/id/${pigex.id}"> ${pigex.title}</a>
+                                </li>
+                            </ul>
+                        </#list>
+                    </li>
+                </#list>
             </ul>
-        </nav>
+        </div>
     </main>
 </div>
-</div>
+
 <footer class="ss-footer">
     <div class="container">
         <div class="links">
@@ -123,6 +114,7 @@
                 <a class="link" href="https://github.com/yuanjs2019">Github</a>
                 <a class="link" href="https://www.jianshu.com/u/58ce6f7c9fd0">简书</a>
             </div>
+
             <div class="cate">
                 <h2 class="cate-title">社区</h2>
                 <a class="link" href="https://github.com/yuanjs2019">Github</a>
@@ -171,47 +163,12 @@
     </div>
 </footer>
 <script src="${re.contextPath}/assets/js/jquery-3.3.1.min.js"></script>
-
 <script type="text/javascript">
-    //进入加载
-    $(function () {
-        $("#ul-list").remove();
-        var html = '<ul id="ul-list" class="list">';
-        var pageNum = ${blogsList.pageNum};
-        var pages = ${blogsList.pages};
-        if(pages < 1){
-         } else if(0 < pages &&  pages < 4){
-            for(let i = 1, len = pages+1; i < len; i++) {
-                if(i == pageNum){
-                    html+='<a href="${re.contextPath}/tag/'+i+'/${tagTitleCode}"> <li class="item -active">'+i+'</li></a>'
-                }else{
-                    html+='<a href="${re.contextPath}/tag/'+i+'/${tagTitleCode}"><li class="item ">'+i+'</li></a>';
-                }
-            }
-         }else{
-            if( pageNum ==1) {
-                 html += '<a href="${re.contextPath}/tag/1/${tagTitleCode}"><li class="item -active">1</li></a>'
-                       + '<a href="${re.contextPath}/tag/2/${tagTitleCode}"><li class="item ">2</li></a>'
-                       + '<a href="${re.contextPath}/tag/3/${tagTitleCode}"><li class="item ">3</li></a>'
-              }else if(pageNum == pages){
-                   html +='<a href="${re.contextPath}/tag/'+(pages-2)+'/${tagTitleCode}"><li class="item ">'+(pages-2)+'</li></a>'
-                         +'<a href="${re.contextPath}/tag/'+(pages-1)+'/${tagTitleCode}"><li class="item ">'+(pages-1)+'</li></a>'
-                         +'<a href="${re.contextPath}/tag/'+pages+'/${tagTitleCode}"><li class="item -active">'+pages+'</li></a>';
-              }else{
-                 html +='<a href="${re.contextPath}/tag/'+(pageNum-1)+'/${tagTitleCode}"><li class="item ">'+(pageNum-1)+'</li></a>'
-                      +'<a href="${re.contextPath}/tag/'+pageNum+'/${tagTitleCode}"><li class="item -active">'+pageNum+'</li></a>'
-                      +'<a href="${re.contextPath}/tag/'+(pageNum+1)+'/${tagTitleCode}"><li class="item ">'+(pageNum+1)+'</li></a>';
-             }
-         }
-        html += '</ul>';
-        $(".ss-pagination").append(html);
-    });
-
     //搜索失去焦点实现
     $(".input").blur(function () {
         let searchvalue = $(".input").val();
         let orgdata = $('#search').attr('href');
-        $('#search').attr('href', orgdata +"1/"+searchvalue)
+        $('#search').attr('href', orgdata + "1/" + searchvalue)
     })
 </script>
 </body>

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
 import com.yuan.farmerwork.ynblog.domain.Blog;
 import com.yuan.farmerwork.ynblog.domain.pojo.Blogs;
+import com.yuan.farmerwork.ynblog.domain.pojo.PigeonholeData;
 import com.yuan.farmerwork.ynblog.domain.pojo.SearchBlog;
 import com.yuan.farmerwork.ynblog.domain.pojo.TagsName;
 
@@ -77,4 +78,10 @@ public interface BlogService extends IService<Blog> {
      * @return
      */
      PageInfo<SearchBlog> searchBlogs(String keywords,Integer page);
+
+    /**
+     * 归档数据
+     * @return
+     */
+    List<PigeonholeData> guiDangSum();
 }

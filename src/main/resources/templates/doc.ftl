@@ -58,7 +58,6 @@
                 <a class="navbar-item " href="${re.contextPath}/about">关于我</a>
             </div>
 
-
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div id="una-menu-search" class="navbar-search">
@@ -73,7 +72,6 @@
     </nav>
 </header>
 
-
 <div class="ss-document-container">
     <div class="document-body with-sidebar">
         <div class="sidebar">
@@ -85,115 +83,33 @@
             <div class="sidebar-body">
                 <div class="catalog-body">
                     <ul>
-                        <li class="active">
-                            <div class="wholerow"></div>
-                            <i class="custom-icon"></i>
-                            <a href="/doc/unaboot/chapter/unaboot/29" class="text">序言</a>
-                        </li>
-                        <li class="">
-                            <div class="wholerow"></div>
-                            <i class="custom-icon caret fa fa-caret-right"></i>
-                            <a href="/doc/unaboot/chapter/unaboot-v1.0" class="text">UnaBoot v1.0</a>
-                            <ul>
-                                <li class="">
+                        <#list docCatalogs as docatax>
+                            <#if docatax_index == 0>
+                                <li class="active">
                                     <div class="wholerow"></div>
                                     <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.0/76" class="text">UnaBoot v1.0快速开始</a>
+                                    <a href="${re.contextPath}/doc/${docatax.docId}/${docatax.id}" class="text">${docatax.title}</a>
                                 </li>
+                            </#if>
+                            <#if docatax_index != 0>
                                 <li class="">
                                     <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.0/77" class="text">1.取值标签</a>
+                                    <i class="custom-icon caret fa fa-caret-right"></i>
+                                    <a href="${re.contextPath}/doc/${docatax.docId}/${docatax.id}" class="text">${docatax.title}</a>
+                                    <#if (docatax.docCatalogs?size>0) >
+                                        <ul>
+                                            <#list docatax.docCatalogs as docatal>
+                                                <li class="">
+                                                    <div class="wholerow"></div>
+                                                    <i class="custom-icon"></i>
+                                                    <a href="${re.contextPath}/doc/${docatal.docId}/${docatal.id}" class="text">${docatal.title}</a>
+                                                </li>
+                                            </#list>
+                                        </ul>
+                                    </#if>
                                 </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.0/78" class="text">2.全局常量</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.0/79" class="text">3.内容标签</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.0/80" class="text">4.分页标签&函数</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="">
-                            <div class="wholerow"></div>
-                            <i class="custom-icon caret fa fa-caret-right"></i>
-                            <a href="/doc/unaboot/chapter/unaboot-v1.2" class="text">UnaBoot v1.2</a>
-                            <ul>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/81" class="text">1.获取源码</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/82" class="text">2.系统初始化</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/83" class="text">3.模块划分</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/84" class="text">4.系统架构</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/85" class="text">5.项目结构</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/86" class="text">6.二次扩展</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/87" class="text">7.全局常量</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/88" class="text">8.格式化函数</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/89" class="text">9.脚本函数</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/90" class="text">10.分页函数</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/91" class="text">11.列表标签</a>
-                                </li>
-                                <li class="">
-                                    <div class="wholerow"></div>
-                                    <i class="custom-icon"></i>
-                                    <a href="/doc/unaboot/chapter/unaboot-v1.2/92" class="text">12.分页标签</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="">
-                            <div class="wholerow"></div>
-                            <i class="custom-icon caret fa fa-caret-right"></i>
-                            <a href="/doc/unaboot/chapter/unaboot-v1.3" class="text">UnaBoot v1.3</a>
-                        </li>
+                            </#if>
+                        </#list>
                     </ul>
                 </div>
             </div>
@@ -209,11 +125,16 @@
                             <i class="fa fa-align-justify"></i>
                         </a>
                     </div>
-                    <h1>序言rererr</h1>
+                    <h1>
+                        <#if detailsContent?exists>
+                          ${detailsContent.subhead}
+                        </#if>
+                    </h1>
                 </div>
                 <div class="article-body typo custom-typo editormd-html-preview editormd-preview-theme-dark">
-                    adsdasdasdas
-
+                    <#if detailsContent?exists>
+                        ${detailsContent.content}
+                    </#if>
                 </div>
                 <div class="article-foot">
                     <div class="article-comment">
@@ -233,19 +154,19 @@
         let orgdata = $('#search').attr('href');
         $('#search').attr('href', orgdata + "1/" + searchvalue)
     })
-    $(".toggle-show-sidebar").on("click",function () {
+    $(".toggle-show-sidebar").on("click", function () {
         $(".document-body").toggleClass("with-sidebar");
     });
-    $(".document-body .sidebar .sidebar-body .catalog-body ul li").hover(function(){
+    $(".document-body .sidebar .sidebar-body .catalog-body ul li").hover(function () {
         $(this).toggleClass("hover");
     });
-    $(".caret").on("click",function(){
+    $(".caret").on("click", function () {
         var that = $(this);
         $(that).parent("li").toggleClass("open");
-        if($(that).hasClass("fa-caret-down")){
+        if ($(that).hasClass("fa-caret-down")) {
             $(that).removeClass("fa-caret-down");
             $(that).addClass("fa-caret-right");
-        }else{
+        } else {
             $(that).removeClass("fa-caret-right");
             $(that).addClass("fa-caret-down");
         }

@@ -83,223 +83,29 @@
     <div class="ss-title"><i class="fa fa-book"></i>文档</div>
 </div>
 <div class="home-background -no-max-width no-opacity">
-    <img src="https://s4.aconvert.com/convert/p3r68-cdx67/av8ce-6l5fw.svg"/>
+   <#-- <img src="https://s4.aconvert.com/convert/p3r68-cdx67/av8ce-6l5fw.svg"/>-->
 </div>
 <div class="ss-layout-container">
     <main class="ss-layout-main">
         <div class="ss-list">
             <h2 class="list-title "><a>技术文档</a></h2>
             <div class="list">
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/happy-captcha" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200517-d9272db3241249adb37246cc610f33a8.png">
-                                </div>
-                                <div class="document-content">
-                                    <h4>HappyCaptcha使用手册</h4>
-                                </div>
-                            </a>
+                <#list documentList as document>
+                    <div class="ss-card ss-document-card">
+                        <div class="card-content">
+                            <div class="ss-document-wrap">
+                                <a href="${re.contextPath}/doc/${document.id}" class="document-detail">
+                                    <div class="document-thumb">
+                                        <img src="${document.cover}">
+                                    </div>
+                                    <div class="document-content">
+                                        <h4>${document.title}</h4>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ss-card ss-document-card">
-                    <div class="card-content">
-                        <div class="ss-document-wrap">
-                            <a href="/doc/unaboot" class="document-detail">
-                                <div class="document-thumb">
-                                    <img src="https://cdn.ramostear.com/20200405-3015d3bbf9f446b19898c22dfb025716.jpg">
-                                </div>
-                                <div class="document-content">
-                                    <h4>UnaBoot系统文档</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                </#list>
             </div>
         </div>
     </main>
@@ -313,7 +119,8 @@
                     <#list blogLaterList as laterData>
                         <#if laterData_index == 0>
                             <li>
-                                <article class="post-overlay post-overlay-bottom post-overlay-floorfade post-overlay-xs">
+                                <article
+                                        class="post-overlay post-overlay-bottom post-overlay-floorfade post-overlay-xs">
                                     <div class="cover-img"
                                          style="background-image: url(${laterData.mainPicture})"></div>
                                     <div class="post-text inverse-text">
@@ -457,7 +264,7 @@
     $(".input").blur(function () {
         let searchvalue = $(".input").val();
         let orgdata = $('#search').attr('href');
-        $('#search').attr('href', orgdata +"1/"+searchvalue)
+        $('#search').attr('href', orgdata + "1/" + searchvalue)
     })
 </script>
 </body>

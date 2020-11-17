@@ -1,21 +1,14 @@
 package com.yuan.farmerwork.ynblog.rest;
 
-import com.baomidou.mybatisplus.extension.api.R;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.yuan.farmerwork.ynblog.domain.*;
 import com.yuan.farmerwork.ynblog.domain.pojo.*;
 import com.yuan.farmerwork.ynblog.service.*;
-import javassist.ClassMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Controller
 public class IndexController {
@@ -140,22 +133,10 @@ public class IndexController {
     }*/
 
 
-    @GetMapping("/documents")
-    public ModelAndView documents(Map map) {
-        List<Blogs> blogLaterList = blogService.findBlogLaterList();
-        map.put("blogLaterList", blogLaterList);
-        List<Blogs> readMoreList = blogService.findReadMoreList();
-        map.put("readMoreList", readMoreList);
-        return new ModelAndView("documents", map);
-    }
 
     @GetMapping("/about")
     public String about() {
         return "about";
-    }
-    @GetMapping("/doc")
-    public String doc() {
-        return "doc";
     }
     @GetMapping("/projects")
     public ModelAndView blogDetails(Map map) {

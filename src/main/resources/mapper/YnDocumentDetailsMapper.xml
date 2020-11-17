@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuan.farmerwork.ynblog.mapper.YnDocumentDetailsMapper">
+
+
+    <!--根据文档id查询文档目录-->
+    <select id="findDocCatalogById" resultType="com.yuan.farmerwork.ynblog.domain.YnDocumentDetails">
+      SELECT
+       id,subhead,`level`,parent_id parentId,is_data isDelete,order_num orderNum
+      FROM yn_document_details
+      WHERE doc_id=#{0}  AND is_delete = 0;
+   </select>
+</mapper>

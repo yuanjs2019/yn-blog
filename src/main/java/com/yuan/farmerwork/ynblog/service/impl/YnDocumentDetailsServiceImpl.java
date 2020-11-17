@@ -4,7 +4,6 @@ package com.yuan.farmerwork.ynblog.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yuan.farmerwork.ynblog.domain.YnDocumentDetails;
 import com.yuan.farmerwork.ynblog.domain.pojo.DocCatalogs;
-import com.yuan.farmerwork.ynblog.domain.pojo.OutPigeData;
 import com.yuan.farmerwork.ynblog.mapper.YnDocumentDetailsMapper;
 import com.yuan.farmerwork.ynblog.service.YnDocumentDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class YnDocumentDetailsServiceImpl extends ServiceImpl<YnDocumentDetailsM
     YnDocumentDetailsMapper documentDetailsMapper;
 
     @Override
-    public List<DocCatalogs> findDocCatalogById(Long docId) {
+    public List<DocCatalogs> findDocCatalogById(Long docId,Long ids) {
         List<DocCatalogs> docCatalogAll = new ArrayList<>();
         List<YnDocumentDetails> docCatalogs = documentDetailsMapper.findDocCatalogById(docId);
         List<YnDocumentDetails> firstLevels = docCatalogs.stream()
@@ -48,6 +47,9 @@ public class YnDocumentDetailsServiceImpl extends ServiceImpl<YnDocumentDetailsM
                 List<DocCatalogs> docCatalogsList = new ArrayList<>();
                 secondLeves.stream().map(z -> {
                     DocCatalogs docCatalog = new DocCatalogs();
+                    if(ids!=0L && ids!=1 && z.getId() == ids){
+                        docCatalog.setType("open");
+                    }
                     docCatalog.setId(z.getId());
                     docCatalog.setTitle(z.getSubhead());
                     docCatalog.setDocId(docId);
@@ -55,6 +57,12 @@ public class YnDocumentDetailsServiceImpl extends ServiceImpl<YnDocumentDetailsM
                     return z;
                 }).collect(Collectors.toList());
                 docCatalogfrist.setDocCatalogs(docCatalogsList);
+            }
+            if(ids!=0 && ids== id){
+
+            }
+            if(ids!=0L && ids!=1 && id == ids){
+                docCatalogfrist.setType("open");
             }
             docCatalogfrist.setId(id);
             docCatalogfrist.setDocId(docId);
@@ -65,4 +73,10 @@ public class YnDocumentDetailsServiceImpl extends ServiceImpl<YnDocumentDetailsM
         //只考慮两层
         return docCatalogAll;
     }
+
+    @Override
+    public int findMaxOrder(Long docId, Long parentId) {
+        return documentDetailsMapper.findMaxOrder(docId,parentId);
+    }
+
 }

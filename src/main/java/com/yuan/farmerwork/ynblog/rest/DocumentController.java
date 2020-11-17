@@ -47,7 +47,7 @@ public class DocumentController {
     @GetMapping("/doc/{id}")
     public ModelAndView docDtails(@PathVariable Long id, Map map) {
         //获取目录
-        List<DocCatalogs> docCatalogs = documentDetailsService.findDocCatalogById(id);
+        List<DocCatalogs> docCatalogs = documentDetailsService.findDocCatalogById(id,0L);
         map.put("docCatalogs", docCatalogs);
         if (!docCatalogs.isEmpty()) {
             //获取内容
@@ -59,16 +59,18 @@ public class DocumentController {
 
     @GetMapping("/doc/{docId}/{id}")
     public ModelAndView docDtails(@PathVariable Long docId, @PathVariable Long id, Map map) {
-        //获取目录
-        List<DocCatalogs> docCatalogs = documentDetailsService.findDocCatalogById(docId);
-        map.put("docCatalogs", docCatalogs);
-        if (!docCatalogs.isEmpty()) {
             //获取内容
+            Long parentId = 0L;
             YnDocumentDetails detailsContent = documentDetailsService.getById(id);
             if (detailsContent != null) {
                 map.put("detailsContent", detailsContent);
+                parentId = detailsContent.getParentId();
             }
-        }
+
+        //获取目录
+        List<DocCatalogs> docCatalogs = documentDetailsService.findDocCatalogById(docId,parentId);
+        map.put("docCatalogs", docCatalogs);
+
         return new ModelAndView("doc", map);
     }
 }

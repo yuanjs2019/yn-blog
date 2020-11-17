@@ -16,6 +16,7 @@ public class DocCatalogs {
     private String title;
     private Long id;
     private Long docId;
+    private String type = "";
 
     private List<DocCatalogs> docCatalogs;
 }

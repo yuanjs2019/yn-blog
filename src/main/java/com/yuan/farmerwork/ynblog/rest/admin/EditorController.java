@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yuan.farmerwork.ynblog.domain.*;
 import com.yuan.farmerwork.ynblog.domain.pojo.EditorProperties;
 import com.yuan.farmerwork.ynblog.domain.pojo.SaveData;
+import com.yuan.farmerwork.ynblog.domain.pojo.SaveDocTageData;
 import com.yuan.farmerwork.ynblog.domain.pojo.TagsName;
 import com.yuan.farmerwork.ynblog.service.*;
 import com.yuan.farmerwork.ynblog.utils.Result;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -40,6 +43,10 @@ public class EditorController {
     YnBlogClassifyService ynBlogClassifyService;
     @Autowired
     YnReadTotallService ynReadTotallService;
+    @Autowired
+    YnDocumentService documentService;
+    @Autowired
+    YnDocumentDetailsService documentDetailsService;
     @Value("${sys.params.default_picture_url}")
     private String defaultPictureUrl;
 
@@ -84,6 +91,17 @@ public class EditorController {
                     classify.setClassifyName(vaule);
                     classify.setClassifyCode(code);
                     classifyService.save(classify);
+                }
+                break;
+                case "doc": {
+                    YnDocument isDocument = documentService.getOne(new QueryWrapper<YnDocument>().eq("title", vaule).last("limit 1"));
+                    if (isDocument != null) {
+                        return Result.build(402, "已存在文档[" + code + "]");
+                    }
+                    YnDocument document = new YnDocument();
+                    document.setTitle(vaule);
+                    document.setCover(code);
+                    documentService.save(document);
                 }
                 break;
                 default:
@@ -179,7 +197,6 @@ public class EditorController {
         return Result.ok();
     }
 
-
     /*
      * 文章编辑页面
      */
@@ -217,5 +234,97 @@ public class EditorController {
         map.put("classifList", classifList);
         map.put("seriesList", seriesList);
         return new ModelAndView("save", map);
+    }
+
+
+    /*
+     * 文档编辑页面
+     */
+    @GetMapping("/docEdit")
+    public ModelAndView docEdit(Map map) {
+        List<YnDocument> documents = documentService.list();
+        map.put("documents", documents);
+        return new ModelAndView("docSave", map);
+    }
+
+
+    /*
+     * 文档编辑页面
+     */
+    @PostMapping("/docSave")
+    public Result docSave(@RequestBody SaveDocTageData tageData) {
+        String idStr = tageData.getId();
+        if (idStr == null || "".equals(idStr)) {
+            return Result.build(402, "文档主题不能为空");
+        }
+        String[] idArray = idStr.split("\\,");
+        if (idArray.length != 1) {
+            return Result.build(402, "文档主题不能为多个");
+        }
+        if (!isNumber(idArray[0])) {
+            return Result.build(402, "文档主题格式不正确");
+        }
+
+
+        String tageLevelStr = tageData.getTageLevel();
+        if (tageLevelStr == null || "".equals(tageLevelStr)) {
+            return Result.build(402, "小节等级不能为空");
+        }
+        String[] tageLevelArray = tageLevelStr.split("\\,");
+        if (tageLevelArray.length != 1) {
+            return Result.build(402, "小节等级不能为多个");
+        }
+        if (!isNumber(tageLevelArray[0])) {
+            return Result.build(402, "小节等级格式不正确");
+        }
+        Integer tageLevel = Integer.valueOf(tageLevelArray[0]);
+
+        String fristTagStr = tageData.getFristTag();
+
+        if (tageLevel == 2 && (fristTagStr == null || "".equals(fristTagStr))) {
+            return Result.build(402, "在二小节下的一级标签不能为空");
+        }
+        Long fristTag = 0L;
+        if (tageLevel == 2) {
+            String[] fristTagArray = fristTagStr.split("\\,");
+            if (fristTagArray.length != 1) {
+                return Result.build(402, "一级标签不能为多个");
+            }
+            if (!isNumber(fristTagArray[0])) {
+                return Result.build(402, "一级标签格式不正确");
+            }
+            fristTag = Long.valueOf(fristTagArray[0]);
+        }
+        Long docId = Long.valueOf(idArray[0]);
+        YnDocumentDetails details = new YnDocumentDetails();
+        details.setDocId(docId);
+        details.setLevel(tageLevel);
+        details.setSubhead(tageData.getDocTitle());
+        if (tageData.getContent() == null || "".equals(tageData.getContent().trim())) {
+            details.setIsData(0);
+        }
+        details.setContent(tageData.getContent());
+        details.setTxtContent(tageData.getTextContent());
+        if (tageLevel == 2) {
+            details.setParentId(fristTag);
+            details.setOrderNum(documentDetailsService.findMaxOrder(docId, fristTag) + 1);
+        } else {
+            details.setOrderNum(documentDetailsService.findMaxOrder(docId, 0L) + 1);
+        }
+        documentDetailsService.save(details);
+        return Result.ok();
+    }
+
+
+    public boolean isNumber(String str) {
+        if (str.length() > 0) {
+            Pattern pattern = Pattern.compile("[0-9]*");
+            Matcher isNum = pattern.matcher(str);
+            if (!isNum.matches()) {
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 }

@@ -37,6 +37,11 @@
                             <use xlink:href="#icon-ARROW"></use>
                         </svg>
                     </a>
+                    <a class="" href="${re.contextPath}/documents"> <span> 文档 </span>
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-ARROW"></use>
+                        </svg>
+                    </a>
                     <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span>
                         <svg class="icon" aria-hidden="true">
                             <use xlink:href="#icon-ARROW"></use>
@@ -54,6 +59,7 @@
             <div class="navbar-start">
                 <a class="navbar-item " href="${re.contextPath}/projects">项目</a>
                 <a class="navbar-item " href="${re.contextPath}/blog">博客</a>
+                <a class="navbar-item " href="${re.contextPath}/documents">文档</a>
                 <a class="navbar-item " href="${re.contextPath}/pigeonhole">归档</a>
                 <a class="navbar-item " href="${re.contextPath}/about">关于我</a>
             </div>
@@ -92,20 +98,22 @@
                                 </li>
                             </#if>
                             <#if docatax_index != 0>
-                                <li class="">
+                                <li class="${docatax.type}">
                                     <div class="wholerow"></div>
                                     <i class="custom-icon caret fa fa-caret-right"></i>
                                     <a href="${re.contextPath}/doc/${docatax.docId}/${docatax.id}" class="text">${docatax.title}</a>
+                                    <#if (docatax.docCatalogs?exists) >
                                     <#if (docatax.docCatalogs?size>0) >
                                         <ul>
                                             <#list docatax.docCatalogs as docatal>
-                                                <li class="">
+                                                <li class="${docatal.type}">
                                                     <div class="wholerow"></div>
                                                     <i class="custom-icon"></i>
                                                     <a href="${re.contextPath}/doc/${docatal.docId}/${docatal.id}" class="text">${docatal.title}</a>
                                                 </li>
                                             </#list>
                                         </ul>
+                                    </#if>
                                     </#if>
                                 </li>
                             </#if>

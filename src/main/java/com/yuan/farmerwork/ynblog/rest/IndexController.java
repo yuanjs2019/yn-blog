@@ -34,6 +34,8 @@ public class IndexController {
     YnMainProjectsService ynMainProjectsService;
     @Autowired
     YnItemsService ynItemsService;
+    @Autowired
+    YnDocumentService documentService;
 
     @GetMapping("/")
     public ModelAndView getIndex(Map map) {
@@ -58,7 +60,7 @@ public class IndexController {
     }
 
     /*
-     * 添加标签，分类，系列页面
+     * 添加标签，分类，系列,文档页面
      */
     @GetMapping("/configure")
     public ModelAndView configure(Map map) {
@@ -95,6 +97,18 @@ public class IndexController {
             return x;
         }).collect(Collectors.toList());
         map.put("secriscBo", secriscBoList);
+
+        List<ClassifiesBo> documentBoList = new ArrayList<>();
+        List<YnDocument> documentList = documentService.list();
+        documentList.stream().map(x -> {
+            ClassifiesBo classifiesBo = new ClassifiesBo();
+            classifiesBo.setName(x.getTitle());
+            classifiesBo.setColor(COLO_LIST.get(new Random().nextInt(COLO_LIST.size())));
+            documentBoList.add(classifiesBo);
+            return x;
+        }).collect(Collectors.toList());
+        map.put("documentBo", documentBoList);
+
         return new ModelAndView("configure", map);
     }
 

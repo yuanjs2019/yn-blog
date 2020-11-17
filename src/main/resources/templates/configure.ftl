@@ -65,6 +65,17 @@
                 </#list>
             </div>
         </div>
+
+        <div class="media text-muted pt-3">
+            <button type="button" class="btn btn-info" id="doc" style="margin-right: 20px;">
+                <strong>文档</strong>
+            </button>
+            <div>
+                <#list documentBo as documenx>
+                    <p style="color:${documenx.color};">${documenx.name}</p>
+                </#list>
+            </div>
+        </div>
     </div>
 </main>
 <!-- 模态框 -->
@@ -78,8 +89,8 @@
             </div>
             <!-- 模态框主体 -->
             <div class="modal-body">
-                <strong>名 称:</strong> <input id="mainContent" class="form-control input-group-lg" type="text">
-                <strong>码 值:</strong> <input id="mainCode" class="form-control input-group-lg" type="text">
+                <strong class="modal-body-name"></strong> <input id="mainContent" class="form-control input-group-lg" type="text">
+                <strong class="modal-body-key"></strong> <input id="mainCode" class="form-control input-group-lg" type="text">
             </div>
 
             <!-- 模态框底部 -->
@@ -100,18 +111,32 @@
     $("#tags").click(function () {
         $('.modal-title').attr('id', 'tags');
         $('.modal-title').html('添加标签');
+        $('.modal-body-name').html('名 称:');
+        $('.modal-body-key').html('码 值:');
         $('#myModal').modal('show');
 
     });
     $("#classify").click(function () {
         $('.modal-title').attr('id', 'classify');
         $('.modal-title').html('添加分类');
+        $('.modal-body-name').html('名 称:');
+        $('.modal-body-key').html('码 值:');
         $('#myModal').modal('show');
 
     });
     $("#secrisc").click(function () {
         $('.modal-title').attr('id', 'secrisc');
         $('.modal-title').html('添加系列');
+        $('.modal-body-name').html('名 称:');
+        $('.modal-body-key').html('码 值:');
+        $('#myModal').modal('show');
+    });
+
+    $("#doc").click(function () {
+        $('.modal-title').attr('id', 'doc');
+        $('.modal-title').html('添加文档');
+        $('.modal-body-name').html('文档名称:');
+        $('.modal-body-key').html('文档封面:');
         $('#myModal').modal('show');
 
     });
@@ -121,6 +146,8 @@
         $("#mainCode").val("");
         $('.modal-title').removeAttr('id');
         $('.modal-title').val("");
+        $('.modal-body-name').val("");
+        $('.modal-body-key').val("");
     });
 
     function saveTo() {

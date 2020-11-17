@@ -75,7 +75,7 @@ public class YnDocumentDetailsServiceImpl extends ServiceImpl<YnDocumentDetailsM
     }
 
     @Override
-    public int findMaxOrder(Long docId, Long parentId) {
+    public Integer findMaxOrder(Long docId, Long parentId) {
         return documentDetailsMapper.findMaxOrder(docId,parentId);
     }
 

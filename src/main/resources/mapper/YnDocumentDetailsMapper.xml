@@ -13,7 +13,7 @@
 
 
     <!--根据文档id查询文档目录-->
-    <select id="findMaxOrder" resultType="int">
+    <select id="findMaxOrder" resultType="Integer">
       SELECT
        max(order_num)
       FROM yn_document_details

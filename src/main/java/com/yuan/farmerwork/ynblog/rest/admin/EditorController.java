@@ -307,9 +307,17 @@ public class EditorController {
         details.setTxtContent(tageData.getTextContent());
         if (tageLevel == 2) {
             details.setParentId(fristTag);
-            details.setOrderNum(documentDetailsService.findMaxOrder(docId, fristTag) + 1);
+            Integer maxOrder = documentDetailsService.findMaxOrder(docId, fristTag);
+            if(maxOrder ==null){
+                maxOrder = 0;
+            }
+            details.setOrderNum( maxOrder + 1);
         } else {
-            details.setOrderNum(documentDetailsService.findMaxOrder(docId, 0L) + 1);
+            Integer maxOrder = documentDetailsService.findMaxOrder(docId, 0L);
+            if(maxOrder ==null){
+                maxOrder = 0;
+            }
+            details.setOrderNum( maxOrder + 1);
         }
         documentDetailsService.save(details);
         return Result.ok();

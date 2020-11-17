@@ -19,5 +19,5 @@ public interface YnDocumentDetailsService extends IService<YnDocumentDetails> {
 
     List<DocCatalogs> findDocCatalogById(Long docId,Long id);
 
-    int findMaxOrder(Long docId,Long parentId);
+    Integer findMaxOrder(Long docId,Long parentId);
 }

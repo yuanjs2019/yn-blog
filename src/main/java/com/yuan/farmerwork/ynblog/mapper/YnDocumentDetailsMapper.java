@@ -22,6 +22,6 @@ public interface YnDocumentDetailsMapper extends BaseMapper<YnDocumentDetails> {
 
     List<YnDocumentDetails> findDocCatalogById(Long docId);
 
-    int findMaxOrder(@Param("docId") Long docId, @Param("parentId") Long parentId);
+    Integer findMaxOrder(@Param("docId") Long docId, @Param("parentId") Long parentId);
 
 }

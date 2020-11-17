@@ -173,8 +173,6 @@
             content: content,
             textContent: textContent
         };
-        console.log(obj)
-
         $.ajax({
             type: "post",
             url: url,

@@ -21,36 +21,20 @@
             </a>
             <div class="-show-mobile">
                 <a id="mobile-menu-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-menu"></use>
-                    </svg>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </a>
                 <nav id="mobile-menu">
-                    <a class="" href="${re.contextPath}/projects"> <span> 项目 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/blog"> <span> 博客 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/documents"> <span> 文档 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/about"> <span> 关于我 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
+                    <div id="una-menu-search-mobile" class="navbar-search-mobile">
+                        <input class="input2" placeholder="请输入要搜索的关键词">
+                        <a id="search2" href="${re.contextPath}/search/">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <a class="" href="${re.contextPath}/projects"> <span> 项目 </span></a>
+                    <a class="" href="${re.contextPath}/blog"> <span> 博客 </span></a>
+                    <a class="" href="${re.contextPath}/documents"> <span> 文档 </span></a>
+                    <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span></a>
+                    <a class="" href="${re.contextPath}/about"> <span> 关于我 </span></a>
                 </nav>
             </div>
         </div>
@@ -77,40 +61,39 @@
     </nav>
 </header>
 
-
-<div style="width:100%;padding-top:70px;">
-    <div class="ss-title"><i class="fa fa-database"></i>归档</div>
+<div class="main-data">
+    <div style="width:100%;padding-top:70px;">
+        <div class="ss-title"><i class="fa fa-database"></i>归档</div>
+    </div>
+    <div class="home-background -no-max-width no-opacity">
+        <#-- <img src="${re.contextPath}/themes/img/banner.svg"/>-->
+    </div>
+    <div class="ss-layout-container">
+        <main class="ss-layout-main -noaside">
+            <div class="ss-archives">
+                <ul>
+                    <#list pigeBlogs as pigexLists>
+                        <li class="archive-item">
+                            <h3 class="archive-title">
+                                ${pigexLists.pigeonholeData[0].yearMonth}
+                                <span class="archive-title-bg"></span>
+                            </h3>
+                            <#list pigexLists.pigeonholeData as pigex>
+                                <ul class="archive-posts">
+                                    <li class="post-item">
+                                        <time class="time post-time"> ${pigex.insertTime}</time>
+                                        <a class="post-title"
+                                           href="${re.contextPath}/dtails/id/${pigex.id}"> ${pigex.title}</a>
+                                    </li>
+                                </ul>
+                            </#list>
+                        </li>
+                    </#list>
+                </ul>
+            </div>
+        </main>
+    </div>
 </div>
-
-<div class="home-background -no-max-width no-opacity">
-    <#-- <img src="${re.contextPath}/themes/img/banner.svg"/>-->
-</div>
-<div class="ss-layout-container">
-    <main class="ss-layout-main -noaside">
-        <div class="ss-archives">
-            <ul>
-                <#list pigeBlogs as pigexLists>
-                    <li class="archive-item">
-                        <h3 class="archive-title">
-                            ${pigexLists.pigeonholeData[0].yearMonth}
-                            <span class="archive-title-bg"></span>
-                        </h3>
-                        <#list pigexLists.pigeonholeData as pigex>
-                            <ul class="archive-posts">
-                                <li class="post-item">
-                                    <time class="time post-time"> ${pigex.insertTime}</time>
-                                    <a class="post-title"
-                                       href="${re.contextPath}/dtails/id/${pigex.id}"> ${pigex.title}</a>
-                                </li>
-                            </ul>
-                        </#list>
-                    </li>
-                </#list>
-            </ul>
-        </div>
-    </main>
-</div>
-
 <footer class="ss-footer">
     <div class="container">
         <div class="links">
@@ -175,6 +158,18 @@
         let searchvalue = $(".input").val();
         let orgdata = $('#search').attr('href');
         $('#search').attr('href', orgdata + "1/" + searchvalue)
+    });
+    $("#mobile-menu-icon").click(function () {
+        $("#mobile-menu").addClass("-active")
+    });
+
+    $(".main-data").mouseup(function () {
+        $("#mobile-menu").removeClass()
+    });
+    $(".input2").blur(function () {
+        let searchvalue = $(".input2").val();
+        let orgdata = $('#search2').attr('href');
+        $('#search2').attr('href', orgdata + "1/" + searchvalue)
     })
 </script>
 </body>

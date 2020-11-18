@@ -3,13 +3,13 @@
 <head>
     <title>softbabet博客</title>
 
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="${re.contextPath}/upload/favicon.png" rel="shortcut icon" type="image/x-icon">
-    <link href="${re.contextPath}/themes/css/base-min.css" rel="stylesheet" />
-    <link href="${re.contextPath}/themes/css/main.css" rel="stylesheet" />
-    <link href="${re.contextPath}/themes/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="${re.contextPath}/themes/css/base-min.css" rel="stylesheet"/>
+    <link href="${re.contextPath}/themes/css/main.css" rel="stylesheet"/>
+    <link href="${re.contextPath}/themes/css/font-awesome.min.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -21,36 +21,20 @@
             </a>
             <div class="-show-mobile">
                 <a id="mobile-menu-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-menu"></use>
-                    </svg>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </a>
                 <nav id="mobile-menu">
-                    <a class="" href="${re.contextPath}/projects"> <span> 项目 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/blog"> <span> 博客 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/documents"> <span> 文档 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/about"> <span> 关于我 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
+                    <div id="una-menu-search-mobile" class="navbar-search-mobile">
+                        <input class="input2" placeholder="请输入要搜索的关键词">
+                        <a id="search2" href="${re.contextPath}/search/">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <a class="" href="${re.contextPath}/projects"> <span> 项目 </span></a>
+                    <a class="" href="${re.contextPath}/blog"> <span> 博客 </span></a>
+                    <a class="" href="${re.contextPath}/documents"> <span> 文档 </span></a>
+                    <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span></a>
+                    <a class="" href="${re.contextPath}/about"> <span> 关于我 </span></a>
                 </nav>
             </div>
         </div>
@@ -78,53 +62,59 @@
     </nav>
 </header>
 
-
-<div style="width:100%;padding-top:70px;"> <div class="ss-title custom-ss-title">全文检索</div></div>
-<div class="home-background -no-max-width no-opacity">
-    <img src="${re.contextPath}/themes/img/banner.svg" />
-</div>
-<div class="ss-layout-container">
-    <main class="ss-layout-main -card -noaside">
-        <div class="ss-search">
-            <div class="input-wrapper">
-                <div class="search-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-search">
-                            <svg id="icon-search" viewBox="0 0 1024 1024">
-                                <path d="M927.104 866.816l-195.626667-208.768C780.629333 601.770667 810.666667 528.426667 810.666667 448 810.666667 271.530667 667.136 128 490.666667 128S170.666667 271.530667 170.666667 448 314.197333 768 490.666667 768c65.322667 0 126.08-19.754667 176.768-53.461333l197.461333 210.688L927.104 866.816zM256 448C256 318.592 361.258667 213.333333 490.666667 213.333333S725.333333 318.592 725.333333 448 620.074667 682.666667 490.666667 682.666667 256 577.408 256 448z">
-                                </path>
-                            </svg>
-                        </use>
-                    </svg>
-                </div>
-                <input id="js-search-input" class="input" type="text" value="${keywords}" placeholder="${keywords}">
-                <a id="js-search-button" onclick="newsearch()" class="button">搜索</a>
-            </div>
-            <div id="js-result-container" class="search-container">
-                <#if pageInfo.total==0>
-                    <div class="not-found">暂无搜索结果</div>
-                   </#if>
-                   <#if pageInfo.total!=0>
-                   <#list pageInfo.list as pagex>
-                   <div class="ss-summary">
-                    <div class="title">
-                        <a href="${re.contextPath}/dtails/id/${pagex.id}">${pagex.title}</a>
+<div class="main-data">
+    <div style="width:100%;padding-top:70px;">
+        <div class="ss-title custom-ss-title">全文检索</div>
+    </div>
+    <div class="home-background -no-max-width no-opacity">
+        <img src="${re.contextPath}/themes/img/banner.svg"/>
+    </div>
+    <div class="ss-layout-container">
+        <main class="ss-layout-main -card -noaside">
+            <div class="ss-search">
+                <div class="input-wrapper">
+                    <div class="search-icon">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-search">
+                                <svg id="icon-search" viewBox="0 0 1024 1024">
+                                    <path d="M927.104 866.816l-195.626667-208.768C780.629333 601.770667 810.666667 528.426667 810.666667 448 810.666667 271.530667 667.136 128 490.666667 128S170.666667 271.530667 170.666667 448 314.197333 768 490.666667 768c65.322667 0 126.08-19.754667 176.768-53.461333l197.461333 210.688L927.104 866.816zM256 448C256 318.592 361.258667 213.333333 490.666667 213.333333S725.333333 318.592 725.333333 448 620.074667 682.666667 490.666667 682.666667 256 577.408 256 448z">
+                                    </path>
+                                </svg>
+                            </use>
+                        </svg>
                     </div>
-                    <div class="summary">${pagex.description}
-                    </div>
+                    <input id="js-search-input" class="input" type="text" value="${keywords}" placeholder="${keywords}">
+                    <a id="js-search-button" onclick="newsearch()" class="button">搜索</a>
                 </div>
-                </#list>
-                </#if>
-                <nav class="ss-pagination" data-total="${pageInfo.total}" data-current="${pageInfo.pageNum}">
-                    <ul id="ul-list" class="list">
-                        <a href="/1"> <li class="item -active">1</li></a>
-                        <a href="/2"><li class="item"> 2 </li></a>
-                    </ul>
-                </nav>
+                <div id="js-result-container" class="search-container">
+                    <#if pageInfo.total==0>
+                        <div class="not-found">暂无搜索结果</div>
+                    </#if>
+                    <#if pageInfo.total!=0>
+                        <#list pageInfo.list as pagex>
+                            <div class="ss-summary">
+                                <div class="title">
+                                    <a href="${re.contextPath}/dtails/id/${pagex.id}">${pagex.title}</a>
+                                </div>
+                                <div class="summary">${pagex.description}
+                                </div>
+                            </div>
+                        </#list>
+                    </#if>
+                    <nav class="ss-pagination" data-total="${pageInfo.total}" data-current="${pageInfo.pageNum}">
+                        <ul id="ul-list" class="list">
+                            <a href="/1">
+                                <li class="item -active">1</li>
+                            </a>
+                            <a href="/2">
+                                <li class="item"> 2</li>
+                            </a>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-        </div>
-    </main>
-</div>
+        </main>
+    </div>
 </div>
 
 
@@ -194,28 +184,28 @@
         var html = '<ul id="ul-list" class="list">';
         var pageNum = ${pageInfo.pageNum};
         var pages = ${pageInfo.pages};
-        if(pages < 1){
-        } else if(0 < pages &&  pages < 4){
-            for(let i = 1, len = pages+1; i < len; i++) {
-                if(i == pageNum){
-                    html+='<a href="${re.contextPath}/search/'+i+'/${keywords}"> <li class="item -active">'+i+'</li></a>'
-                }else{
-                    html+='<a href="${re.contextPath}/search/'+i+'/${keywords}"><li class="item ">'+i+'</li></a>';
+        if (pages < 1) {
+        } else if (0 < pages && pages < 4) {
+            for (let i = 1, len = pages + 1; i < len; i++) {
+                if (i == pageNum) {
+                    html += '<a href="${re.contextPath}/search/' + i + '/${keywords}"> <li class="item -active">' + i + '</li></a>'
+                } else {
+                    html += '<a href="${re.contextPath}/search/' + i + '/${keywords}"><li class="item ">' + i + '</li></a>';
                 }
             }
-        }else{
-            if( pageNum ==1) {
+        } else {
+            if (pageNum == 1) {
                 html += '<a href="${re.contextPath}/search/1/${keywords}"><li class="item -active">1</li></a>'
                     + '<a href="${re.contextPath}/search/2/${keywords}"><li class="item ">2</li></a>'
                     + '<a href="${re.contextPath}/search/3/${keywords}"><li class="item ">3</li></a>'
-            }else if(pageNum == pages){
-                html +='<a href="${re.contextPath}/search/'+(pages-2)+'/${keywords}"><li class="item ">'+(pages-2)+'</li></a>'
-                    +'<a href="${re.contextPath}/search/'+(pages-1)+'/${keywords}"><li class="item ">'+(pages-1)+'</li></a>'
-                    +'<a href="${re.contextPath}/search/'+pages+'/${keywords}"><li class="item -active">'+pages+'</li></a>';
-            }else{
-                html +='<a href="${re.contextPath}/search/'+(pageNum-1)+'/${keywords}"><li class="item ">'+(pageNum-1)+'</li></a>'
-                    +'<a href="${re.contextPath}/search/'+pageNum+'/${keywords}"><li class="item -active">'+pageNum+'</li></a>'
-                    +'<a href="${re.contextPath}/search/'+(pageNum+1)+'/${keywords}"><li class="item ">'+(pageNum+1)+'</li></a>';
+            } else if (pageNum == pages) {
+                html += '<a href="${re.contextPath}/search/' + (pages - 2) + '/${keywords}"><li class="item ">' + (pages - 2) + '</li></a>'
+                    + '<a href="${re.contextPath}/search/' + (pages - 1) + '/${keywords}"><li class="item ">' + (pages - 1) + '</li></a>'
+                    + '<a href="${re.contextPath}/search/' + pages + '/${keywords}"><li class="item -active">' + pages + '</li></a>';
+            } else {
+                html += '<a href="${re.contextPath}/search/' + (pageNum - 1) + '/${keywords}"><li class="item ">' + (pageNum - 1) + '</li></a>'
+                    + '<a href="${re.contextPath}/search/' + pageNum + '/${keywords}"><li class="item -active">' + pageNum + '</li></a>'
+                    + '<a href="${re.contextPath}/search/' + (pageNum + 1) + '/${keywords}"><li class="item ">' + (pageNum + 1) + '</li></a>';
             }
         }
         html += '</ul>';
@@ -226,13 +216,23 @@
     $("#search-input").blur(function () {
         let searchvalue = $("#search-input").val();
         let orgdata = $('#search').attr('href');
-        $('#search').attr('href', orgdata +"1/"+searchvalue)
-    })
+        $('#search').attr('href', orgdata + "1/" + searchvalue)
+    });
+    $("#mobile-menu-icon").click(function () {
+        $("#mobile-menu").addClass("-active")
+    });
 
-
+    $(".main-data").mouseup(function () {
+        $("#mobile-menu").removeClass()
+    });
+    $(".input2").blur(function () {
+        let searchvalue = $(".input2").val();
+        let orgdata = $('#search2').attr('href');
+        $('#search2').attr('href', orgdata + "1/" + searchvalue)
+    });
     function newsearch() {
         let searchvalue = $("#js-search-input").val();
-         window.location.href='${re.contextPath}/search/1/'+searchvalue;
+        window.location.href = '${re.contextPath}/search/1/' + searchvalue;
     }
 </script>
 </body>

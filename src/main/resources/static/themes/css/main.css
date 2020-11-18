@@ -1664,3 +1664,24 @@ body {
     right:0;
     overflow-y:hidden
 }
+#mobile-menu .navbar-search-mobile {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 0 16px;
+     width: 100%;
+     height: 60px;
+     color: rgba(0, 0, 0, 0.65);
+     background-color: #1FC3CB;
+     border-bottom: 1px solid #EDEDED;
+ }
+#mobile-menu .navbar-search-mobile .input2 {
+    width: 93%;
+    height: 32px;
+    padding: 0 8px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}

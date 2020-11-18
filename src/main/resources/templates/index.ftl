@@ -16,6 +16,7 @@
         margin: 0;
         box-sizing: border-box;
     }
+
     .slogan .feature-container {
         width: 32%;
         padding: 60px 32px;
@@ -35,35 +36,54 @@
         box-shadow: none;
         border-radius: 16px;
     }
+
     .charpter-description .intro-table .row {
         cursor: pointer;
     }
+
     .charpter-description .intro-table .row .col-2 {
         text-align: left;
         font-size: 13px;
         border-right: none;
         line-height: 20px;
     }
+
     .charpter-description .description-container .home-description, .charpter-description .description-container .intro-table .row .col-2, .charpter-description .intro-table .row .description-container .col-2 {
         line-height: 28px;
         margin-bottom: 20px;
     }
+
     .charpter-description .intro-table .row .col-2 {
         text-align: left;
         font-size: 13px;
         border-right: none;
         line-height: 20px;
     }
+
     .charpter-description .intro-table .row .col-1, .charpter-description .intro-table .row .col-2 {
         padding: 16px;
         text-align: center;
         border: 1px solid #d9d9d9;
     }
+
     .charpter-description .intro-table .row:hover {
         background: #a5e4ea;
     }
+
     .charpter-description .intro-table .row .col-1:hover {
         background: #1FC3CB;
+    }
+    @media (max-width: 568px){
+        .slogan .feature-container > img {
+        height: auto;
+        width: 100%;
+     }
+    }
+    @media (max-width: 568px){}
+    .slogan .feature-container {
+        width: 100%;
+        padding: 30px 24px;
+    }
     }
 </style>
 
@@ -76,36 +96,20 @@
             </a>
             <div class="-show-mobile">
                 <a id="mobile-menu-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-menu"></use>
-                    </svg>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </a>
                 <nav id="mobile-menu">
-                    <a class="" href="${re.contextPath}/projects"> <span> 项目 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/blog"> <span> 博客 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/documents"> <span> 文档 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/about"> <span> 关于我 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
+                    <div id="una-menu-search-mobile" class="navbar-search-mobile">
+                        <input class="input2" placeholder="请输入要搜索的关键词">
+                        <a id="search2" href="${re.contextPath}/search/">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <a class="" href="${re.contextPath}/projects"> <span> 项目 </span></a>
+                    <a class="" href="${re.contextPath}/blog"> <span> 博客 </span></a>
+                    <a class="" href="${re.contextPath}/documents"> <span> 文档 </span></a>
+                    <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span></a>
+                    <a class="" href="${re.contextPath}/about"> <span> 关于我 </span></a>
                 </nav>
             </div>
         </div>
@@ -133,12 +137,12 @@
     </nav>
 </header>
 
-
-<div style="width:100%;padding-top:70px;"></div>
-<div class="home-background -no-max-width no-opacity">
-   <#-- <img src="${re.contextPath}/themes/img/bgpx.png"/>-->
+<div class="main-data">
+    <div style="width:100%;padding-top:70px;"></div>
+    <div class="home-background -no-max-width no-opacity">
+        <#-- <img src="${re.contextPath}/themes/img/bgpx.png"/>-->
+    </div>
 </div>
-
 <div class="slogan">
     <div class="home-container">
         <h1 class="slogan-title"><img src="${re.contextPath}/themes/img/logo.png" alt="yjs"></h1>
@@ -155,13 +159,13 @@
         </div>
         <div class="feature">
             <#list mainProjectsList as mainproject>
-            <div class="feature-container">
-                <img class="img" src="${mainproject.headPicture}"/>
-                <h2 class="feature-title">${mainproject.title}</h2>
-                <p class="home-description">
-                    ${mainproject.simpleExplain}
-                </p>
-            </div>
+                <div class="feature-container">
+                    <img class="img" src="${mainproject.headPicture}"/>
+                    <h2 class="feature-title">${mainproject.title}</h2>
+                    <p class="home-description">
+                        ${mainproject.simpleExplain}
+                    </p>
+                </div>
             </#list>
             <#--<div class="feature-container">
                 <img class="img" src="${re.contextPath}/themes/img/action.svg"/>
@@ -192,11 +196,12 @@
                 <table class="intro-table" style="width:100%">
                     <tbody>
                     <#list readList as redx>
-                    <tr class="row">
-                        <td class="col-2"><a href="${re.contextPath}/dtails/id/${redx.id}" target="_blank">${redx.title}</a></td>
-                        <td class="col-1"><a href="${re.contextPath}/dtails/id/${redx.id}" target="_blank">
-                                <i class="fa fa-eye"></i> ${redx.readNums}</a></td>
-                    </tr>
+                        <tr class="row">
+                            <td class="col-2"><a href="${re.contextPath}/dtails/id/${redx.id}"
+                                                 target="_blank">${redx.title}</a></td>
+                            <td class="col-1"><a href="${re.contextPath}/dtails/id/${redx.id}" target="_blank">
+                                    <i class="fa fa-eye"></i> ${redx.readNums}</a></td>
+                        </tr>
                     </#list>
                     <#--<tr class="row">
                         <td class="col-2"><a href="/blog/2020/03/20/xgjoix9a.html" target="_blank">2.
@@ -310,6 +315,18 @@
         let searchvalue = $(".input").val();
         let orgdata = $('#search').attr('href');
         $('#search').attr('href', orgdata + "1/" + searchvalue)
+    });
+    $("#mobile-menu-icon").click(function () {
+        $("#mobile-menu").addClass("-active")
+    });
+
+    $(".main-data").mouseup(function () {
+        $("#mobile-menu").removeClass()
+    });
+    $(".input2").blur(function () {
+        let searchvalue = $(".input2").val();
+        let orgdata = $('#search2').attr('href');
+        $('#search2').attr('href', orgdata + "1/" + searchvalue)
     })
 </script>
 </body>

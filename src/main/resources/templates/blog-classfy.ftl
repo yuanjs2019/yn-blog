@@ -22,36 +22,20 @@
             </a>
             <div class="-show-mobile">
                 <a id="mobile-menu-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-menu"></use>
-                    </svg>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </a>
                 <nav id="mobile-menu">
-                    <a class="" href="${re.contextPath}/projects"> <span> 项目 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/blog"> <span> 博客 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/documents"> <span> 文档 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/about"> <span> 关于我 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
+                    <div id="una-menu-search-mobile" class="navbar-search-mobile">
+                        <input class="input2" placeholder="请输入要搜索的关键词">
+                        <a id="search2" href="${re.contextPath}/search/">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <a class="" href="${re.contextPath}/projects"> <span> 项目 </span></a>
+                    <a class="" href="${re.contextPath}/blog"> <span> 博客 </span></a>
+                    <a class="" href="${re.contextPath}/documents"> <span> 文档 </span></a>
+                    <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span></a>
+                    <a class="" href="${re.contextPath}/about"> <span> 关于我 </span></a>
                 </nav>
             </div>
         </div>
@@ -78,52 +62,65 @@
         </div>
     </nav>
 </header>
+<div class="main-data">
+    <div style="width:100%;padding-top:70px;">
+        <div class="ss-title"><i class="fa fa-tag"></i>分类 >${classfyTitleName}</div>
+    </div>
+    <div class="home-background -no-max-width no-opacity">
+        <img src="${re.contextPath}/themes/img/cover-bg.png"/>
 
-<div style="width:100%;padding-top:70px;">
-    <div class="ss-title"><i class="fa fa-tag"></i>分类 >${classfyTitleName}</div>
-</div>
-<div class="home-background -no-max-width no-opacity">
-    <img src="${re.contextPath}/themes/img/cover-bg.png"/>
-
-</div>
-<div class="ss-layout-container">
-    <main class="ss-layout-main -noaside">
-        <#list blogsList.list as blog>
-        <article class="ss-summary ss-card article">
-            <img src="${blog.mainPicture}" alt="cover"
-                 class="cover">
-            <div class="container">
-                <h2 class="title">
-                    <a href="${re.contextPath}/dtails/id/${blog.id}">${blog.title}</a>
-                </h2>
-                <div class="meta">
-                    <i class="fa fa-user"> ${blog.author}</i>
-                    <i class="fa fa-calendar-o"> ${blog.createTime}</i>
-                    <i class="fa fa-home"> ${blog.typeStr}</i>
-                    <i class="fa fa-eye"> ${blog.readNums}</i>
-                </div>
-                <div class="summary">${blog.description}</div>
-                <div class="tags">
-                    <#list blog.tagsLists as tagxx>
-                    <a class="tag" href="${re.contextPath}/tag/${tagxx.tagsCode}" target="_blank" rel="tag">${tagxx.tagsName}</a>
-                    </#list>
-                </div>
-            </div>
-        </article>
-        </#list>
-        <nav class="ss-pagination" data-total="${blogsList.total}" data-current="${blogsList.pageNum}">
-            <ul id="ul-list" class="list">
-                <a href="/blog/page/1"> <li class="item -active">1</li></a>
-                <a href="/blog/page/2"><li class="item"> 2 </li></a>
-                <a href="/blog/page/2"><li class="item"> 3 </li></a>
-                 ......
-                <a href="/blog/page/3"><li class="item ">4</li></a>
-                <a href="/blog/page/4"><li class="item ">5</li></a>
-                <a href="/blog/page/4"><li class="item ">6</li></a>
-            </ul>
-        </nav>
-    </main>
-</div>
+    </div>
+    <div class="ss-layout-container">
+        <main class="ss-layout-main -noaside">
+            <#list blogsList.list as blog>
+                <article class="ss-summary ss-card article">
+                    <img src="${blog.mainPicture}" alt="cover"
+                         class="cover">
+                    <div class="container">
+                        <h2 class="title">
+                            <a href="${re.contextPath}/dtails/id/${blog.id}">${blog.title}</a>
+                        </h2>
+                        <div class="meta">
+                            <i class="fa fa-user"> ${blog.author}</i>
+                            <i class="fa fa-calendar-o"> ${blog.createTime}</i>
+                            <i class="fa fa-home"> ${blog.typeStr}</i>
+                            <i class="fa fa-eye"> ${blog.readNums}</i>
+                        </div>
+                        <div class="summary">${blog.description}</div>
+                        <div class="tags">
+                            <#list blog.tagsLists as tagxx>
+                                <a class="tag" href="${re.contextPath}/tag/${tagxx.tagsCode}" target="_blank"
+                                   rel="tag">${tagxx.tagsName}</a>
+                            </#list>
+                        </div>
+                    </div>
+                </article>
+            </#list>
+            <nav class="ss-pagination" data-total="${blogsList.total}" data-current="${blogsList.pageNum}">
+                <ul id="ul-list" class="list">
+                    <a href="/blog/page/1">
+                        <li class="item -active">1</li>
+                    </a>
+                    <a href="/blog/page/2">
+                        <li class="item"> 2</li>
+                    </a>
+                    <a href="/blog/page/2">
+                        <li class="item"> 3</li>
+                    </a>
+                    ......
+                    <a href="/blog/page/3">
+                        <li class="item ">4</li>
+                    </a>
+                    <a href="/blog/page/4">
+                        <li class="item ">5</li>
+                    </a>
+                    <a href="/blog/page/4">
+                        <li class="item ">6</li>
+                    </a>
+                </ul>
+            </nav>
+        </main>
+    </div>
 </div>
 <footer class="ss-footer">
     <div class="container">
@@ -189,30 +186,30 @@
         var html = '<ul id="ul-list" class="list">';
         var pageNum = ${blogsList.pageNum};
         var pages = ${blogsList.pages};
-        if(pages < 1){
-         } else if(0 < pages &&  pages < 4){
-            for(let i = 1, len = pages+1; i < len; i++) {
-                if(i == pageNum){
-                    html+='<a href="${re.contextPath}/classfy/'+i+'/${classfyTitleCode}"> <li class="item -active">'+i+'</li></a>'
-                }else{
-                    html+='<a href="${re.contextPath}/classfy/'+i+'/${classfyTitleCode}"><li class="item ">'+i+'</li></a>';
+        if (pages < 1) {
+        } else if (0 < pages && pages < 4) {
+            for (let i = 1, len = pages + 1; i < len; i++) {
+                if (i == pageNum) {
+                    html += '<a href="${re.contextPath}/classfy/' + i + '/${classfyTitleCode}"> <li class="item -active">' + i + '</li></a>'
+                } else {
+                    html += '<a href="${re.contextPath}/classfy/' + i + '/${classfyTitleCode}"><li class="item ">' + i + '</li></a>';
                 }
             }
-         }else{
-            if( pageNum ==1) {
-                 html += '<a href="${re.contextPath}/classfy/1/${classfyTitleCode}"><li class="item -active">1</li></a>'
-                       + '<a href="${re.contextPath}/classfy/2/${classfyTitleCode}"><li class="item ">2</li></a>'
-                       + '<a href="${re.contextPath}/classfy/3/${classfyTitleCode}"><li class="item ">3</li></a>'
-              }else if(pageNum == pages){
-                   html +='<a href="${re.contextPath}/classfy/'+(pages-2)+'/${classfyTitleCode}"><li class="item ">'+(pages-2)+'</li></a>'
-                         +'<a href="${re.contextPath}/classfy/'+(pages-1)+'/${classfyTitleCode}"><li class="item ">'+(pages-1)+'</li></a>'
-                         +'<a href="${re.contextPath}/classfy/'+pages+'/${classfyTitleCode}"><li class="item -active">'+pages+'</li></a>';
-              }else{
-                 html +='<a href="${re.contextPath}/classfy/'+(pageNum-1)+'/${classfyTitleCode}"><li class="item ">'+(pageNum-1)+'</li></a>'
-                      +'<a href="${re.contextPath}/classfy/'+pageNum+'/${classfyTitleCode}"><li class="item -active">'+pageNum+'</li></a>'
-                      +'<a href="${re.contextPath}/classfy/'+(pageNum+1)+'/${classfyTitleCode}"><li class="item ">'+(pageNum+1)+'</li></a>';
-             }
-         }
+        } else {
+            if (pageNum == 1) {
+                html += '<a href="${re.contextPath}/classfy/1/${classfyTitleCode}"><li class="item -active">1</li></a>'
+                    + '<a href="${re.contextPath}/classfy/2/${classfyTitleCode}"><li class="item ">2</li></a>'
+                    + '<a href="${re.contextPath}/classfy/3/${classfyTitleCode}"><li class="item ">3</li></a>'
+            } else if (pageNum == pages) {
+                html += '<a href="${re.contextPath}/classfy/' + (pages - 2) + '/${classfyTitleCode}"><li class="item ">' + (pages - 2) + '</li></a>'
+                    + '<a href="${re.contextPath}/classfy/' + (pages - 1) + '/${classfyTitleCode}"><li class="item ">' + (pages - 1) + '</li></a>'
+                    + '<a href="${re.contextPath}/classfy/' + pages + '/${classfyTitleCode}"><li class="item -active">' + pages + '</li></a>';
+            } else {
+                html += '<a href="${re.contextPath}/classfy/' + (pageNum - 1) + '/${classfyTitleCode}"><li class="item ">' + (pageNum - 1) + '</li></a>'
+                    + '<a href="${re.contextPath}/classfy/' + pageNum + '/${classfyTitleCode}"><li class="item -active">' + pageNum + '</li></a>'
+                    + '<a href="${re.contextPath}/classfy/' + (pageNum + 1) + '/${classfyTitleCode}"><li class="item ">' + (pageNum + 1) + '</li></a>';
+            }
+        }
         html += '</ul>';
         $(".ss-pagination").append(html);
     });
@@ -221,7 +218,19 @@
     $(".input").blur(function () {
         let searchvalue = $(".input").val();
         let orgdata = $('#search').attr('href');
-        $('#search').attr('href', orgdata +"1/"+searchvalue)
+        $('#search').attr('href', orgdata + "1/" + searchvalue)
+    });
+    $("#mobile-menu-icon").click(function () {
+        $("#mobile-menu").addClass("-active")
+    });
+
+    $(".main-data").mouseup(function () {
+        $("#mobile-menu").removeClass()
+    });
+    $(".input2").blur(function () {
+        let searchvalue = $(".input2").val();
+        let orgdata = $('#search2').attr('href');
+        $('#search2').attr('href', orgdata + "1/" + searchvalue)
     })
 </script>
 </body>

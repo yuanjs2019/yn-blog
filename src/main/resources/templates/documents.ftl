@@ -21,36 +21,20 @@
             </a>
             <div class="-show-mobile">
                 <a id="mobile-menu-icon">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-menu"></use>
-                    </svg>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </a>
                 <nav id="mobile-menu">
-                    <a class="" href="${re.contextPath}/projects"> <span> 项目 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/blog"> <span> 博客 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/documents"> <span> 文档 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
-                    <a class="" href="${re.contextPath}/about"> <span> 关于我 </span>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-ARROW"></use>
-                        </svg>
-                    </a>
+                    <div id="una-menu-search-mobile" class="navbar-search-mobile">
+                        <input class="input2" placeholder="请输入要搜索的关键词">
+                        <a id="search2" href="${re.contextPath}/search/">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <a class="" href="${re.contextPath}/projects"> <span> 项目 </span></a>
+                    <a class="" href="${re.contextPath}/blog"> <span> 博客 </span></a>
+                    <a class="" href="${re.contextPath}/documents"> <span> 文档 </span></a>
+                    <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span></a>
+                    <a class="" href="${re.contextPath}/about"> <span> 关于我 </span></a>
                 </nav>
             </div>
         </div>
@@ -77,130 +61,132 @@
         </div>
     </nav>
 </header>
-
-
-<div style="width:100%;padding-top:70px;">
-    <div class="ss-title"><i class="fa fa-book"></i>文档</div>
-</div>
-<div class="home-background -no-max-width no-opacity">
-   <#-- <img src="https://s4.aconvert.com/convert/p3r68-cdx67/av8ce-6l5fw.svg"/>-->
-</div>
-<div class="ss-layout-container">
-    <main class="ss-layout-main">
-        <div class="ss-list">
-            <h2 class="list-title "><a>技术文档</a></h2>
-            <div class="list">
-                <#list documentList as document>
-                    <div class="ss-card ss-document-card">
-                        <div class="card-content">
-                            <div class="ss-document-wrap">
-                                <a href="${re.contextPath}/doc/${document.id}" class="document-detail">
-                                    <div class="document-thumb">
-                                        <img src="${document.cover}">
-                                    </div>
-                                    <div class="document-content">
-                                        <h4>${document.title}</h4>
-                                    </div>
-                                </a>
+<div class="main-data">
+    <div style="width:100%;padding-top:70px;">
+        <div class="ss-title"><i class="fa fa-book"></i>文档</div>
+    </div>
+    <div class="home-background -no-max-width no-opacity">
+        <#--<img src="${re.contextPath}/themes/img/001.svg"/>-->
+        <#--<img src="${re.contextPath}/themes/img/blog-banner.svg"/>-->
+    </div>
+    <div class="ss-layout-container">
+        <main class="ss-layout-main">
+            <div class="ss-list">
+                <h2 class="list-title "><a>技术文档</a></h2>
+                <div class="list">
+                    <#list documentList as document>
+                        <div class="ss-card ss-document-card">
+                            <div class="card-content">
+                                <div class="ss-document-wrap">
+                                    <a href="${re.contextPath}/doc/${document.id}" class="document-detail">
+                                        <div class="document-thumb">
+                                            <img src="${document.cover}">
+                                        </div>
+                                        <div class="document-content">
+                                            <h4>${document.title}</h4>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </#list>
+                    </#list>
+                </div>
             </div>
-        </div>
-    </main>
-    <aside class="ss-layout-aside">
-        <div class="ss-card">
-            <h2 class="card-title custom-card-title">
-                最新阅读
-            </h2>
-            <div class="card-content">
-                <ol class="posts-list list-space-sm list-unstyled">
-                    <#list blogLaterList as laterData>
-                        <#if laterData_index == 0>
-                            <li>
-                                <article
-                                        class="post-overlay post-overlay-bottom post-overlay-floorfade post-overlay-xs">
-                                    <div class="cover-img"
-                                         style="background-image: url(${laterData.mainPicture})"></div>
-                                    <div class="post-text inverse-text">
-                                        <div class="post-text-wrap">
-                                            <div class="post-text-inner">
-                                                <h3 class="post-title typescale-1">
-                                                    ${laterData.title}
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span><i class="fa fa-user"> ${laterData.author}</i></span>
-                                                    <time class="time published">
-                                                        <i class="fa fa-calendar-o"> ${laterData.createTime}</i>
-                                                    </time>
+        </main>
+        <aside class="ss-layout-aside">
+            <div class="ss-card">
+                <h2 class="card-title custom-card-title">
+                    最新阅读
+                </h2>
+                <div class="card-content">
+                    <ol class="posts-list list-space-sm list-unstyled">
+                        <#list blogLaterList as laterData>
+                            <#if laterData_index == 0>
+                                <li>
+                                    <article
+                                            class="post-overlay post-overlay-bottom post-overlay-floorfade post-overlay-xs">
+                                        <div class="cover-img"
+                                             style="background-image: url(${laterData.mainPicture})"></div>
+                                        <div class="post-text inverse-text">
+                                            <div class="post-text-wrap">
+                                                <div class="post-text-inner">
+                                                    <h3 class="post-title typescale-1">
+                                                        ${laterData.title}
+                                                    </h3>
+                                                    <div class="post-meta">
+                                                        <span><i class="fa fa-user"> ${laterData.author}</i></span>
+                                                        <time class="time published">
+                                                            <i class="fa fa-calendar-o"> ${laterData.createTime}</i>
+                                                        </time>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <a href="${re.contextPath}/dtails/id/${laterData.id}"
+                                               class="link-overlay"></a>
                                         </div>
-                                        <a href="${re.contextPath}/dtails/id/${laterData.id}" class="link-overlay"></a>
-                                    </div>
-                                </article>
-                            </li>
-                        </#if>
-                        <#if laterData_index !=0>
+                                    </article>
+                                </li>
+                            </#if>
+                            <#if laterData_index !=0>
+                                <li>
+                                    <article class="post post-horizontal post-horizontal-xxs">
+                                        <div class="post-thumb min-height-70">
+                                            <a href="#">
+                                                <img src="${laterData.mainPicture}" alt=""
+                                                     style="width: 80px;height: 80px">
+                                            </a>
+                                        </div>
+                                        <div class="post-text">
+                                            <h3 class="post-title typescale-0">
+                                                <a href="${re.contextPath}/dtails/id/${laterData.id}"> ${laterData.title}</a>
+                                            </h3>
+                                            <div class="post-meta">
+                                                <time class="time published">
+                                                    <i class="fa fa-calendar-o"> ${laterData.createTime}</i>
+                                                </time>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                            </#if>
+                        </#list>
+                    </ol>
+                </div>
+            </div>
+            <div class="ss-card">
+                <h2 class="card-title custom-card-title">
+                    热门文章
+                </h2>
+                <div class="card-content">
+                    <ol class="posts-list list-space-sm list-unstyled">
+                        <#list readMoreList as readmore>
                             <li>
                                 <article class="post post-horizontal post-horizontal-xxs">
                                     <div class="post-thumb min-height-70">
                                         <a href="#">
-                                            <img src="${laterData.mainPicture}" alt="" style="width: 80px;height: 80px">
+                                            <img src="${readmore.mainPicture}"
+                                                 alt="" style="width: 80px;height: 80px">
                                         </a>
                                     </div>
                                     <div class="post-text">
                                         <h3 class="post-title typescale-0">
-                                            <a href="${re.contextPath}/dtails/id/${laterData.id}"> ${laterData.title}</a>
+                                            <a href="${re.contextPath}/dtails/id/${readmore.id}">${readmore.title}</a>
                                         </h3>
                                         <div class="post-meta">
                                             <time class="time published">
-                                                <i class="fa fa-calendar-o"> ${laterData.createTime}</i>
+                                                <i class="fa fa-calendar-o">${readmore.createTime}</i>
                                             </time>
                                         </div>
                                     </div>
                                 </article>
                             </li>
-                        </#if>
-                    </#list>
-                </ol>
+                        </#list>
+                    </ol>
+                </div>
             </div>
-        </div>
-        <div class="ss-card">
-            <h2 class="card-title custom-card-title">
-                热门文章
-            </h2>
-            <div class="card-content">
-                <ol class="posts-list list-space-sm list-unstyled">
-                    <#list readMoreList as readmore>
-                        <li>
-                            <article class="post post-horizontal post-horizontal-xxs">
-                                <div class="post-thumb min-height-70">
-                                    <a href="#">
-                                        <img src="${readmore.mainPicture}"
-                                             alt="" style="width: 80px;height: 80px">
-                                    </a>
-                                </div>
-                                <div class="post-text">
-                                    <h3 class="post-title typescale-0">
-                                        <a href="${re.contextPath}/dtails/id/${readmore.id}">${readmore.title}</a>
-                                    </h3>
-                                    <div class="post-meta">
-                                        <time class="time published">
-                                            <i class="fa fa-calendar-o">${readmore.createTime}</i>
-                                        </time>
-                                    </div>
-                                </div>
-                            </article>
-                        </li>
-                    </#list>
-                </ol>
-            </div>
-        </div>
-    </aside>
+        </aside>
+    </div>
 </div>
-
 <footer class="ss-footer">
     <div class="container">
         <div class="links">
@@ -265,7 +251,21 @@
         let searchvalue = $(".input").val();
         let orgdata = $('#search').attr('href');
         $('#search').attr('href', orgdata + "1/" + searchvalue)
+    });
+    $("#mobile-menu-icon").click(function () {
+        $("#mobile-menu").addClass("-active")
+    });
+
+    $(".main-data").mouseup(function () {
+        $("#mobile-menu").removeClass()
+    });
+    $(".input2").blur(function () {
+        let searchvalue = $(".input2").val();
+        let orgdata = $('#search2').attr('href');
+        $('#search2').attr('href', orgdata + "1/" + searchvalue)
     })
+
+
 </script>
 </body>
 </html>

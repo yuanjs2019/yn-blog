@@ -11,7 +11,7 @@
  Target Server Version : 80021
  File Encoding         : 65001
 
- Date: 11/11/2020 11:04:20
+ Date: 18/11/2020 14:29:24
 */
 
 SET NAMES utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `blog`  (
   `is_delete` tinyint(1) NOT NULL DEFAULT 1 COMMENT '是否删除：0-删除，1-未删除',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_title`(`title`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '博客文章主表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for yn_blog_classify
@@ -49,7 +49,7 @@ CREATE TABLE `yn_blog_classify`  (
   `classify_id` bigint(0) NOT NULL COMMENT '分类id',
   `blog_id` bigint(0) NOT NULL COMMENT '文章博客id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '博客与分类关联表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for yn_blog_tag
@@ -60,7 +60,7 @@ CREATE TABLE `yn_blog_tag`  (
   `tag_id` bigint(0) NOT NULL COMMENT '分类id',
   `blog_id` bigint(0) NOT NULL COMMENT '文章博客id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '博客与标签关联表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for yn_classify
@@ -71,7 +71,36 @@ CREATE TABLE `yn_classify`  (
   `classify_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '分类名称',
   `classify_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '分类编号',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '分类表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for yn_document
+-- ----------------------------
+DROP TABLE IF EXISTS `yn_document`;
+CREATE TABLE `yn_document`  (
+  `id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '文档名称',
+  `cover` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '封面',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '文档主表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for yn_document_details
+-- ----------------------------
+DROP TABLE IF EXISTS `yn_document_details`;
+CREATE TABLE `yn_document_details`  (
+  `id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `doc_id` bigint(0) NULL DEFAULT NULL COMMENT '文档id',
+  `subhead` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '副标题',
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '内容',
+  `txt_content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '内容',
+  `level` tinyint(0) NOT NULL COMMENT '层级',
+  `parent_id` bigint(0) NOT NULL DEFAULT 0 COMMENT '父级id',
+  `is_data` tinyint(0) NULL DEFAULT 1 COMMENT '是否存在数据：0-不存在，1-存在',
+  `order_num` tinyint(0) NULL DEFAULT NULL COMMENT '同级排序',
+  `is_delete` tinyint(0) NOT NULL DEFAULT 0 COMMENT '是否删除：0-不删除，1-删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '文档明细表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for yn_items
@@ -87,7 +116,20 @@ CREATE TABLE `yn_items`  (
   `item_introduce_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '项目文档地址',
   `item_classfy_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '项目分类名称',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '项目表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for yn_links
+-- ----------------------------
+DROP TABLE IF EXISTS `yn_links`;
+CREATE TABLE `yn_links`  (
+  `id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `link_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '链接资源名称',
+  `link_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '链接资源地址',
+  `link_descption` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '链接资源介绍',
+  `is_delelte` tinyint(0) NULL DEFAULT 0 COMMENT '是否删除：0-不删除，1-删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '友情链接表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for yn_main_projects
@@ -99,7 +141,7 @@ CREATE TABLE `yn_main_projects`  (
   `head_picture` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '标题图',
   `simple_explain` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '介绍',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '首页展示主要涉及方面表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for yn_mian
@@ -109,7 +151,7 @@ CREATE TABLE `yn_mian`  (
   `id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `main_title` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '主页介绍',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '首页总体介绍表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for yn_read_totall
@@ -120,7 +162,7 @@ CREATE TABLE `yn_read_totall`  (
   `blog_id` bigint(0) NOT NULL COMMENT '文章id',
   `read_nums` bigint(0) NOT NULL DEFAULT 0 COMMENT '阅读次数',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 70 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '统计文章访问量表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for yn_series
@@ -131,7 +173,7 @@ CREATE TABLE `yn_series`  (
   `serics_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '系列名称',
   `serics_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '系列编码',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系列表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for yn_tag
@@ -142,6 +184,6 @@ CREATE TABLE `yn_tag`  (
   `tag_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '标签名称',
   `tag_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '标签编码',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '标签表' ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;

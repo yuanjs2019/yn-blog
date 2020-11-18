@@ -35,4 +35,19 @@
 
 - 博客地址：[http://114.67.107.180/ynblog](http://114.67.107.180/ynblog)
 
+![首页](./outimg/1.png)
+
+![博客](./outimg/2.png)
+
+![文档](./outimg/3.png)
+
+![归档](./outimg/4.png)
+
+![资源链接](./outimg/5.png)
+
+![全文检索](./outimg/6.png)
+
+![热点博客](./outimg/7.png)
+
+![项目](./outimg/8.png)
   

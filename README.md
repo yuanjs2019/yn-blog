@@ -4,7 +4,7 @@
 
 ### 如果对您有帮助，您可以点右上角 "`Star`" 支持一下 谢谢！
 
-### 如果您想获悉项目实时更新信息，您可以点右上角 [![Fork me on Gitee](http://114.67.107.180/ynblog/themes/img/widget_6.svg)](https://gitee.com/yuan625/yn-blog)感谢您的支持！
+### 如果您想获悉项目实时更新信息，您可以点右上角 [![Fork me on Gitee](http://114.67.107.180/ynblog/upload/forkme.svg)](https://gitee.com/yuan625/yn-blog)感谢您的支持！
 
 ###  项目介绍
 

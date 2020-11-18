@@ -1,6 +1,6 @@
 #  炫酷且全面的博客：yn-blog
 
-[![spring-boot](https://img.shields.io/badge/spring--boot-2.3.4-green.svg) ](http://spring.io/projects/spring-boot)[![mybatis-plus](https://img.shields.io/badge/mybatis--plus-3.3.1-blue.svg) ](http://mp.baomidou.com/)[![thymeleaf](https://img.shields.io/badge/thymeleaf-3.0.1-yellow.svg) ](https://www.thymeleaf.org/) [![lombok](https://img.shields.io/badge/lombok-1.18.16-blue.svg) ](https://projectlombok.org/) [![freemarker](https://img.shields.io/badge/freemarker-2.3.23-blue.svg) ](http://freemarker.foofun.cn/)
+[![spring-boot](https://img.shields.io/badge/spring--boot-2.3.4-green.svg) ](http://spring.io/projects/spring-boot)[![mybatis-plus](https://img.shields.io/badge/mybatis--plus-3.3.1-blue.svg) ](http://mp.baomidou.com/)[![thymeleaf](https://img.shields.io/badge/thymeleaf-3.0.1-yellow.svg) ](https://www.thymeleaf.org/) [![lombok](https://img.shields.io/badge/lombok-1.18.16-blue.svg) ](https://projectlombok.org/) [![freemarker](https://img.shields.io/badge/freemarker-2.3.23-blue.svg) ](http://freemarker.foofun.cn/) [![bootstrap](https://img.shields.io/badge/bootstrap-4.1.3-blue.svg) ](https://www.bootcss.com/)
 
  **如果对您有帮助，您可以点右上角 "`Star`" 支持一下 谢谢！**
 

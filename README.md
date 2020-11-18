@@ -6,5 +6,6 @@
 
  **如果您想获悉项目实时更新信息，您可以点右上角 [![Fork me on Gitee](./outimg/forkme.svg)](https://gitee.com/yuan625/yn-blog)感谢您的支持！**
 
+ **本项目还在不断开发完善中,如有建议或问题请通`Issues`反馈！**
 ###  项目介绍
 

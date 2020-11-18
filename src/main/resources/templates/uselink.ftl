@@ -9,6 +9,7 @@
     <link href="${re.contextPath}/themes/css/base-min.css" rel="stylesheet"/>
     <link href="${re.contextPath}/themes/css/main.css" rel="stylesheet"/>
     <link href="${re.contextPath}/themes/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="${re.contextPath}/themes/css/extends.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -48,7 +49,6 @@
                 <a class="navbar-item " href="${re.contextPath}/about">关于我</a>
             </div>
 
-
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div id="una-menu-search" class="navbar-search">
@@ -63,21 +63,35 @@
     </nav>
 </header>
 
-
 <div class="main-data">
-    <div style="width:100%;padding-top:70px;"></div>
     <div class="home-background -no-max-width no-opacity">
-        <img src="${re.contextPath}/themes/img/001.svg"/>
+        <#-- <img src="${re.contextPath}/themes/img/banner.svg"/>-->
     </div>
     <div class="ss-layout-container">
-        <main class="ss-layout-main -card -noaside">
-            敬请期待!~~
+        <main class="ss-layout-main -noaside">
+            <div class="ss-archives">
+                <ul>
+                    <li class="archive-item">
+                        <h3 class="archive-title">
+                            友情链接
+                            <span class="archive-title-bg"></span>
+                        </h3>
+                        <#list ynLinks as ynlink>
+                            <ul class="archive-posts">
+                                <li class="post-item">
+                                    <i style="color: red" class="fa fa-star" aria-hidden="true"></i>
+                                    <a class="post-title"
+                                       href="${ynlink.linkUrl}"> ${ynlink.linkName}</a>
+                                    <a class="post-text"> ${ynlink.linkDescption}</a>
+                                </li>
+                            </ul>
+                        </#list>
+                    </li>
+                </ul>
+            </div>
         </main>
     </div>
 </div>
-</div>
-
-
 <footer class="ss-footer">
     <div class="container">
         <div class="links">
@@ -142,18 +156,18 @@
         let searchvalue = $(".input").val();
         let orgdata = $('#search').attr('href');
         $('#search').attr('href', orgdata + "1/" + searchvalue)
-    })
+    });
+    $("#mobile-menu-icon").click(function () {
+        $("#mobile-menu").addClass("-active")
+    });
+
+    $(".main-data").mouseup(function () {
+        $("#mobile-menu").removeClass()
+    });
     $(".input2").blur(function () {
         let searchvalue = $(".input2").val();
         let orgdata = $('#search2').attr('href');
         $('#search2').attr('href', orgdata + "1/" + searchvalue)
-    })
-    $("#mobile-menu-icon").click(function () {
-        $("#mobile-menu").addClass("-active")
-    })
-
-    $(".main-data").mouseup(function () {
-        $("#mobile-menu").removeClass()
     })
 </script>
 </body>

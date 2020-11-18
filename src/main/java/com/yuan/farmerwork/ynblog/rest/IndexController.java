@@ -1,5 +1,6 @@
 package com.yuan.farmerwork.ynblog.rest;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yuan.farmerwork.ynblog.domain.*;
 import com.yuan.farmerwork.ynblog.domain.pojo.*;
 import com.yuan.farmerwork.ynblog.service.*;
@@ -36,7 +37,12 @@ public class IndexController {
     YnItemsService ynItemsService;
     @Autowired
     YnDocumentService documentService;
+    @Autowired
+    YnLinksService ynLinksService;
 
+    /*
+     * 首页
+     */
     @GetMapping("/")
     public ModelAndView getIndex(Map map) {
         //获取首页介绍
@@ -54,6 +60,9 @@ public class IndexController {
         return new ModelAndView("index", map);
     }
 
+    /*
+     * 404页面
+     */
     @GetMapping("/haserror")
     public String error() {
         return "404";
@@ -137,21 +146,17 @@ public class IndexController {
         return new ModelAndView("pigeonhole", map);
     }
 
-    /*@GetMapping("/details")
-    public ModelAndView projects(Map map) {
-        PageHelper.startPage(1, 2);
-        List<Blog> blogList = blogService.list();
-        PageInfo<Blog> blogPageInfo = new PageInfo<>(blogList);
-        map.put("blog", blogPageInfo.getList().get(0));
-        return new ModelAndView("details", map);
-    }*/
-
-
-
+    /*
+     * 关于我页面
+     */
     @GetMapping("/about")
     public String about() {
         return "about";
     }
+
+    /*
+     * 项目页面
+     */
     @GetMapping("/projects")
     public ModelAndView blogDetails(Map map) {
         List<ItemClassfy> itemClassfies = new ArrayList<>();
@@ -176,5 +181,15 @@ public class IndexController {
         }*/
         map.put("itemClassfies", itemClassfies);
         return new ModelAndView("projects", map);
+    }
+
+    /*
+     * 友情链接页面
+     */
+    @GetMapping("/uselink")
+    public ModelAndView useLink(Map map) {
+        List<YnLinks> ynLinks = ynLinksService.list(new QueryWrapper<YnLinks>().eq("is_delelte", 0));
+        map.put("ynLinks", ynLinks);
+        return new ModelAndView("uselink", map);
     }
 }

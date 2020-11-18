@@ -79,11 +79,11 @@
         width: 100%;
      }
     }
-    @media (max-width: 568px){}
+    @media (max-width: 568px){
     .slogan .feature-container {
         width: 100%;
         padding: 30px 24px;
-    }
+     }
     }
 </style>
 
@@ -109,6 +109,7 @@
                     <a class="" href="${re.contextPath}/blog"> <span> 博客 </span></a>
                     <a class="" href="${re.contextPath}/documents"> <span> 文档 </span></a>
                     <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span></a>
+                    <a class="" href="${re.contextPath}/uselink"> <span> 友情连接 </span></a>
                     <a class="" href="${re.contextPath}/about"> <span> 关于我 </span></a>
                 </nav>
             </div>
@@ -119,6 +120,7 @@
                 <a class="navbar-item " href="${re.contextPath}/blog">博客</a>
                 <a class="navbar-item " href="${re.contextPath}/documents">文档</a>
                 <a class="navbar-item " href="${re.contextPath}/pigeonhole">归档</a>
+                <a class="navbar-item " href="${re.contextPath}/uselink">友情连接</a>
                 <a class="navbar-item " href="${re.contextPath}/about">关于我</a>
             </div>
 
@@ -189,7 +191,7 @@
     <div class="home-container">
         <div class="container">
             <div class="img-container -hidden-mobile">
-                <img src="https://cdn.ramostear.com/hotest.gif" style="width:100%">
+               <#-- <img src="https://cdn.ramostear.com/hotest.gif" style="width:100%">-->
             </div>
             <div class="description-container">
                 <h3 class="title">阅读榜单</h3>
@@ -203,48 +205,6 @@
                                     <i class="fa fa-eye"></i> ${redx.readNums}</a></td>
                         </tr>
                     </#list>
-                    <#--<tr class="row">
-                        <td class="col-2"><a href="/blog/2020/03/20/xgjoix9a.html" target="_blank">2.
-                                架构师必备技能指南：SaaS(软件即服务)架构设计</a></td>
-                        <td class="col-1"><a href="/blog/2020/03/20/xgjoix9a.html" target="_blank"><i
-                                        class="fa fa-eye"></i> 21,220</a></td>
-                    </tr>
-                    <tr class="row">
-                        <td class="col-2"><a href="/blog/2020/03/20/rjld06fe.html" target="_blank">3. JSON Web
-                                Token绝非银弹，“蹲坑”需谨慎小心</a></td>
-                        <td class="col-1"><a href="/blog/2020/03/20/rjld06fe.html" target="_blank"><i
-                                        class="fa fa-eye"></i> 20,934</a></td>
-                    </tr>
-                    <tr class="row">
-                        <td class="col-2"><a href="/blog/2020/03/22/m763440m.html" target="_blank">4.
-                                尤娜博客系统新的征程(una-boot-1.2.0已上线)</a></td>
-                        <td class="col-1"><a href="/blog/2020/03/22/m763440m.html" target="_blank"><i
-                                        class="fa fa-eye"></i> 19,729</a></td>
-                    </tr>
-                    <tr class="row">
-                        <td class="col-2"><a href="/blog/2020/04/08/t029f7tj.html" target="_blank">5.
-                                如何部署微服务架构下的应用程序？</a></td>
-                        <td class="col-1"><a href="/blog/2020/04/08/t029f7tj.html" target="_blank"><i
-                                        class="fa fa-eye"></i> 18,667</a></td>
-                    </tr>
-                    <tr class="row">
-                        <td class="col-2"><a href="/blog/2020/03/20/taa0ve0f.html" target="_blank">6.
-                                尤娜-极致简洁，为极客创作而生</a></td>
-                        <td class="col-1"><a href="/blog/2020/03/20/taa0ve0f.html" target="_blank"><i
-                                        class="fa fa-eye"></i> 18,513</a></td>
-                    </tr>
-                    <tr class="row">
-                        <td class="col-2"><a href="/blog/2020/03/20/20w5f6n9.html" target="_blank">7. 在生产环境中重启Spring
-                                Boot应用</a></td>
-                        <td class="col-1"><a href="/blog/2020/03/20/20w5f6n9.html" target="_blank"><i
-                                        class="fa fa-eye"></i> 18,018</a></td>
-                    </tr>
-                    <tr class="row">
-                        <td class="col-2"><a href="/blog/2020/03/20/lnx5467y.html" target="_blank">8.
-                                鱼与熊掌得兼：Hibernate与Mybatis共存</a></td>
-                        <td class="col-1"><a href="/blog/2020/03/20/lnx5467y.html" target="_blank"><i
-                                        class="fa fa-eye"></i> 15,403</a></td>
-                    </tr>-->
                     </tbody>
                 </table>
             </div>

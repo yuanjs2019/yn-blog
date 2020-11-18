@@ -34,7 +34,7 @@
                     <a class="" href="${re.contextPath}/blog"> <span> 博客 </span></a>
                     <a class="" href="${re.contextPath}/documents"> <span> 文档 </span></a>
                     <a class="" href="${re.contextPath}/pigeonhole"> <span> 归档 </span></a>
-                    <a class="" href="${re.contextPath}/uselink"> <span> 友情连接 </span></a>
+                    <a class="" href="${re.contextPath}/uselink"> <span> 资源链接 </span></a>
                     <a class="" href="${re.contextPath}/about"> <span> 关于我 </span></a>
                 </nav>
             </div>
@@ -45,7 +45,7 @@
                 <a class="navbar-item " href="${re.contextPath}/blog">博客</a>
                 <a class="navbar-item " href="${re.contextPath}/documents">文档</a>
                 <a class="navbar-item " href="${re.contextPath}/pigeonhole">归档</a>
-                <a class="navbar-item " href="${re.contextPath}/uselink">友情连接</a>
+                <a class="navbar-item " href="${re.contextPath}/uselink">资源链接</a>
                 <a class="navbar-item " href="${re.contextPath}/about">关于我</a>
             </div>
 
@@ -73,7 +73,7 @@
                 <ul>
                     <li class="archive-item">
                         <h3 class="archive-title">
-                            友情链接
+                            资源链接
                             <span class="archive-title-bg"></span>
                         </h3>
                         <#list ynLinks as ynlink>

@@ -33,6 +33,6 @@
 
 ### 页面演示
 
-- 博客地址：[http://114.67.107.180/ynblog/blog](http://114.67.107.180/ynblog/blog)
+- 博客地址：[http://114.67.107.180/ynblog/blog](http://114.67.107.180/ynblog)
 
   

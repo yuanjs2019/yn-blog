@@ -150,8 +150,11 @@ public class IndexController {
      * 关于我页面
      */
     @GetMapping("/about")
-    public String about() {
-        return "about";
+    public ModelAndView about(Map map) {
+        //获取首页介绍
+        List<YnMian> ynMians = ynMianService.list();
+        map.put("ownIntro", ynMians.get(1).getMainTitle());
+        return new ModelAndView("about", map);
     }
 
     /*

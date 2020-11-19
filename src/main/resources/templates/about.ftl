@@ -9,6 +9,7 @@
     <link href="${re.contextPath}/themes/css/base-min.css" rel="stylesheet"/>
     <link href="${re.contextPath}/themes/css/main.css" rel="stylesheet"/>
     <link href="${re.contextPath}/themes/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="${re.contextPath}/themes/css/extends.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -65,16 +66,43 @@
 
 
 <div class="main-data">
-    <div style="width:100%;padding-top:70px;"></div>
     <div class="home-background -no-max-width no-opacity">
-        <img src="${re.contextPath}/themes/img/001.svg"/>
+        <#--<img src="${re.contextPath}/themes/img/001.svg"/>-->
     </div>
     <div class="ss-layout-container">
-        <main class="ss-layout-main -card -noaside">
-            敬请期待!~~
+        <main class="ss-layout-main -noaside">
+            <article class="typo about-me" style="max-width: 980px">
+                <div class="profile-info">
+                    <h3 class="title">自我简介</h3>
+                    <#--  <img src="/weilan/img/me.png" class="avatar" align="left">-->
+                    <div class="intro-text">
+                         ${ownIntro}
+                    </div>
+                </div>
+
+                <div class="net-info">
+                    <h3 class="title">社交网络信息</h3>
+                    <ul>
+                        <li><i class="fa fa-envelope-o"></i> yuanjs625@163.com</li>
+                        <li><i class="fa fa-qq"></i> 625621105</li>
+                        <li><i class="fa fa-github"></i><a href="https://github.com/yuanjs2019" target="_blank">https://github.com/yuanjs2019</a>
+                        </li>
+                        <li><i class="fa fa-git"></i> <a href="https://gitee.com/yuan625" target="_blank">https://gitee.com/yuan625</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="profile-info">
+                    <h3 class="title">最新开源</h3>
+                    <ul class="archive-posts-extend">
+                        <div class="post-item">
+                            <i style="color: red" class="fa fa-star" aria-hidden="true"></i>
+                            <strong><a href="https://gitee.com/yuan625/yn-blog">yn-blog博客项目</a></strong>
+                        </div>
+                    </ul>
+                </div>
+            </article>
         </main>
     </div>
-</div>
 </div>
 
 
@@ -151,7 +179,6 @@
     $("#mobile-menu-icon").click(function () {
         $("#mobile-menu").addClass("-active")
     })
-
     $(".main-data").mouseup(function () {
         $("#mobile-menu").removeClass()
     })

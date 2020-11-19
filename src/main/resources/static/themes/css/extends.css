@@ -799,6 +799,12 @@ i.custom-icon:before {
     margin-left: 60px;
     transition: transform .5s linear;
 }
+.archive-posts-extend .post-item{
+    border-left: 1px #0c9c8b solid;
+    padding: 10px;
+    margin-left: 30px;
+    transition: transform .5s linear;
+}
 .ss-archives .archive-item .archive-posts .post-item .time.post-item{
     color: #8a8a8a;
 }
@@ -807,7 +813,17 @@ i.custom-icon:before {
     font-weight: bold;
 }
 .ss-archives .archive-item .archive-posts .post-item:hover{
-    border-image:linear-gradient(to bottom,#E91E63,#6900f3) 1;
+    border-image:linear-gradient(to bottom,#E91E63, #15af9d) 1;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: 2px transparent solid;
+    transform: translateX(4px);
+    transition: transform .5s linear;
+    cursor: pointer;
+}
+.archive-posts-extend .post-item:hover{
+    border-image:linear-gradient(to bottom,#E91E63, #15af9d) 1;
     border-top: none;
     border-right: none;
     border-bottom: none;
@@ -839,7 +855,7 @@ i.custom-icon:before {
 .about-me .intro-text{
     font-size: 18px;
     line-height: 30px;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     color: #4f5c6d;
 }
 .profile-info .title,.net-info .title{

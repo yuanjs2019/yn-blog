@@ -802,7 +802,6 @@ i.custom-icon:before {
 .archive-posts-extend .post-item{
     border-left: 1px #0c9c8b solid;
     padding: 10px;
-    margin-left: 30px;
     transition: transform .5s linear;
 }
 .ss-archives .archive-item .archive-posts .post-item .time.post-item{

@@ -1,16 +1,4 @@
 /*
- Navicat Premium Data Transfer
-
- Source Server         : My-JD-mysql
- Source Server Type    : MySQL
- Source Server Version : 80021
- Source Host           : 114.67.107.180:3306
- Source Schema         : yn-blog
-
- Target Server Type    : MySQL
- Target Server Version : 80021
- File Encoding         : 65001
-
  Date: 18/11/2020 14:29:24
 */
 

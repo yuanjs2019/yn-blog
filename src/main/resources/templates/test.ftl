@@ -9,11 +9,9 @@
     <link href="${re.contextPath}/themes/css/base-min.css" rel="stylesheet"/>
     <link href="${re.contextPath}/themes/css/main.css" rel="stylesheet"/>
     <link href="${re.contextPath}/themes/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="${re.contextPath}/themes/css/extends.css" rel="stylesheet"/>
 </head>
 
 <body>
-
 <header class="ss-header">
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -50,7 +48,7 @@
                 <a class="navbar-item " href="${re.contextPath}/about">关于我</a>
             </div>
 
-
+            <#--  #1FC3CB  #ff6a00-->
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div id="una-menu-search" class="navbar-search">
@@ -64,66 +62,51 @@
         </div>
     </nav>
 </header>
-<div class="main-data">
-    <div style="width:100%;">
-        <div class="ss-title"><i class="fa fa-tag"></i>分类 >${classfyTitleName}</div>
-    </div>
-    <div class="home-background -no-max-width no-opacity">
-        <img src="${re.contextPath}/themes/img/cover-bg.png"/>
 
-    </div>
-    <div class="ss-layout-container">
-        <main class="ss-layout-main -noaside">
-            <#list blogsList.list as blog>
-                <article class="ss-summary ss-card article">
-                    <img src="${blog.mainPicture}" alt="cover"
-                         class="cover">
-                    <div class="container">
-                        <h2 class="title">
-                            <a href="${re.contextPath}/dtails/id/${blog.id}">${blog.title}</a>
-                        </h2>
-                        <div class="meta">
-                            <i class="fa fa-user"> ${blog.author}</i>
-                            <i class="fa fa-calendar-o"> ${blog.createTime}</i>
-                            <i class="fa fa-home"> ${blog.typeStr}</i>
-                            <i class="fa fa-eye"> ${blog.readNums}</i>
-                        </div>
-                        <div class="summary">${blog.description}</div>
-                        <div class="tags">
-                            <#list blog.tagsLists as tagxx>
-                                <a class="tag" href="${re.contextPath}/tag/${tagxx.tagsCode}" target="_blank"
-                                   rel="tag">${tagxx.tagsName}</a>
-                            </#list>
-                        </div>
+
+<div class="ss-layout-container">
+    <aside class="ss-layout-aside -left ss-card -soft-hidden">
+        <div id="js-drawer" class="ss-toc -show">
+            <div id="js-drawer-handle" class="drawer-handle -show">
+               <i class="fa fa-bars icon-menu" aria-hidden="true"></i>
+               <i class="fa fa-times icon-close" aria-hidden="true"></i>
+            </div>
+            <div class="drawer-body">
+                <div class="drawer-body">
+                    <div class="headers" title="">
+                        Halo Framework
                     </div>
-                </article>
-            </#list>
-            <nav class="ss-pagination" data-total="${blogsList.total}" data-current="${blogsList.pageNum}">
-                <ul id="ul-list" class="list">
-                    <a href="/blog/page/1">
-                        <li class="item -active">1</li>
-                    </a>
-                    <a href="/blog/page/2">
-                        <li class="item"> 2</li>
-                    </a>
-                    <a href="/blog/page/2">
-                        <li class="item"> 3</li>
-                    </a>
-                    ......
-                    <a href="/blog/page/3">
-                        <li class="item ">4</li>
-                    </a>
-                    <a href="/blog/page/4">
-                        <li class="item ">5</li>
-                    </a>
-                    <a href="/blog/page/4">
-                        <li class="item ">6</li>
-                    </a>
-                </ul>
-            </nav>
-        </main>
-    </div>
+                <div class="body">
+                    <ul class="leaf-section">
+                        <#list docCatalogs as docatax>
+                        <li class="item">
+                            <div class="link ${docatax.type}">
+                                <a title="${docatax.title}" href="${re.contextPath}/test/${docatax.docId}/${docatax.id}">${docatax.title}</a>
+                            </div>
+                        </li>
+                        </#list>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <main class="ss-layout-main -card">
+        <div class="ss-meta">
+            <div class="container">
+                <h1 class="title"> <#if detailsContent?exists>
+                        ${detailsContent.subhead}
+                    </#if></h1>
+            </div>
+            <div class="meta">更新时间: 2018-09-12</div>
+        </div>
+        <article class="typo">
+            <#if detailsContent?exists>
+                ${detailsContent.content}
+            </#if>
+        </article>
+    </main>
 </div>
+
 <footer class="ss-footer">
     <div class="container">
         <div class="links">
@@ -133,6 +116,7 @@
                 <a class="link" href="https://github.com/yuanjs2019">Github</a>
                 <a class="link" href="https://www.jianshu.com/u/58ce6f7c9fd0">简书</a>
             </div>
+
             <div class="cate">
                 <h2 class="cate-title">社区</h2>
                 <a class="link" href="https://github.com/yuanjs2019">Github</a>
@@ -178,62 +162,37 @@
             您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
         </span>
         </p>
+
     </div>
 </footer>
 <script src="${re.contextPath}/assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-    //进入加载
-    $(function () {
-        $("#ul-list").remove();
-        var html = '<ul id="ul-list" class="list">';
-        var pageNum = ${blogsList.pageNum};
-        var pages = ${blogsList.pages};
-        if (pages < 1) {
-        } else if (0 < pages && pages < 4) {
-            for (let i = 1, len = pages + 1; i < len; i++) {
-                if (i == pageNum) {
-                    html += '<a href="${re.contextPath}/classfy/' + i + '/${classfyTitleCode}"> <li class="item -active">' + i + '</li></a>'
-                } else {
-                    html += '<a href="${re.contextPath}/classfy/' + i + '/${classfyTitleCode}"><li class="item ">' + i + '</li></a>';
-                }
-            }
-        } else {
-            if (pageNum == 1) {
-                html += '<a href="${re.contextPath}/classfy/1/${classfyTitleCode}"><li class="item -active">1</li></a>'
-                    + '<a href="${re.contextPath}/classfy/2/${classfyTitleCode}"><li class="item ">2</li></a>'
-                    + '<a href="${re.contextPath}/classfy/3/${classfyTitleCode}"><li class="item ">3</li></a>'
-            } else if (pageNum == pages) {
-                html += '<a href="${re.contextPath}/classfy/' + (pages - 2) + '/${classfyTitleCode}"><li class="item ">' + (pages - 2) + '</li></a>'
-                    + '<a href="${re.contextPath}/classfy/' + (pages - 1) + '/${classfyTitleCode}"><li class="item ">' + (pages - 1) + '</li></a>'
-                    + '<a href="${re.contextPath}/classfy/' + pages + '/${classfyTitleCode}"><li class="item -active">' + pages + '</li></a>';
-            } else {
-                html += '<a href="${re.contextPath}/classfy/' + (pageNum - 1) + '/${classfyTitleCode}"><li class="item ">' + (pageNum - 1) + '</li></a>'
-                    + '<a href="${re.contextPath}/classfy/' + pageNum + '/${classfyTitleCode}"><li class="item -active">' + pageNum + '</li></a>'
-                    + '<a href="${re.contextPath}/classfy/' + (pageNum + 1) + '/${classfyTitleCode}"><li class="item ">' + (pageNum + 1) + '</li></a>';
-            }
-        }
-        html += '</ul>';
-        $(".ss-pagination").append(html);
-    });
-
-    //搜索失去焦点实现
     $(".input").blur(function () {
         let searchvalue = $(".input").val();
         let orgdata = $('#search').attr('href');
         $('#search').attr('href', orgdata + "1/" + searchvalue)
-    });
+    })
     $("#mobile-menu-icon").click(function () {
         $("#mobile-menu").addClass("-active")
-    });
+    })
 
-    $(".main-data").mouseup(function () {
+    $(".ss-layout-main").mouseup(function () {
         $("#mobile-menu").removeClass()
-    });
+    })
     $(".input2").blur(function () {
         let searchvalue = $(".input2").val();
         let orgdata = $('#search2').attr('href');
         $('#search2').attr('href', orgdata + "1/" + searchvalue)
+    });
+    $(".icon-menu").click(function () {
+        $("#js-drawer").addClass(" -show");
+        $("#js-drawer-handle").addClass(" -show");
+    });
+    $(".icon-close").click(function () {
+        $("#js-drawer").removeClass(" -show");
+        $("#js-drawer-handle").removeClass(" -show");
     })
+
 </script>
 </body>
 </html>

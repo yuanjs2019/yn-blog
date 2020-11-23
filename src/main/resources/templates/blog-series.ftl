@@ -65,7 +65,7 @@
     </nav>
 </header>
 <div class="main-data">
-    <div style="width:100%;padding-top:70px;">
+    <div style="width:100%;">
         <div class="ss-title"><i class="fa fa-tag"></i>系列 >${seriesTitleName}</div>
     </div>
     <div class="home-background -no-max-width no-opacity">

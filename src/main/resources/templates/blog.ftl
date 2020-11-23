@@ -65,7 +65,7 @@
     </nav>
 </header>
 <div class="main-data">
-    <div style="width:100%;padding-top:70px;">
+    <div style="width:100%;">
         <div class="ss-title">博客</div>
     </div>
     <div class="home-background -no-max-width no-opacity">

@@ -1,5 +1,6 @@
 package com.yuan.farmerwork.ynblog.domain;
 
+import java.time.LocalDateTime;
 import java.io.Serializable;
 
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -9,56 +10,58 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 
+ * 项目文档表
  * </p>
  *
  * @author yjs
- * @since 2020-11-09
+ * @since 2020-11-23
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class YnItems implements Serializable {
+public class YnItemsDetails implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     /**
-     * 项目分类id
+     * 项目id
      */
-    private Integer itemClassfyId;
-    /**
-     * 项目分类名称
-     */
-    private String itemClassfyName;
+    private Long itemsId;
 
     /**
-     * 项目名称
+     * 项目标签主题
      */
-    private String itemName;
+    private String itemsTitle;
 
     /**
-     * 项目简介
+     * 内容
      */
-    private String itemExplain;
+    private String content;
 
     /**
-     * 项目图标地址
+     * 内容
      */
-    private String itemPicture;
+    private String txtContent;
 
     /**
-     * 项目地址
+     * 同级排序
      */
-    private String itemUrl;
+    private Integer orderNum;
 
     /**
-     * 项目文档地址
+     * 创建时间
      */
-    private String itemIntroduceUrl;
+    private LocalDateTime createTime;
 
     /**
-     * 是否存在说明文档：0-不存在，1-存在
+     * 更新时间
      */
-    private Integer hasDocument;
+    private LocalDateTime updateTime;
+
+    /**
+     * 是否删除：0-不删除，1-删除
+     */
+    private Integer isDelete;
+
 
 }

@@ -83,7 +83,12 @@
                                     <div class="header-first">
                                         <img class="project-icon" src="${yntem.itemPicture}"/>
                                         <h3 class="card-title">
-                                            <a href="${yntem.itemIntroduceUrl}">${yntem.itemName}</a>
+                                              <#if yntem.hasDocument == 0>
+                                                <a href="${yntem.itemIntroduceUrl}">${yntem.itemName}</a>
+                                              </#if>
+                                              <#if yntem.hasDocument != 0>
+                                                <a href="${re.contextPath}/itemsdtails/${yntem.id}">${yntem.itemName}</a>
+                                              </#if>
                                         </h3>
                                     </div>
                                     <div class="gitstar">

@@ -157,34 +157,6 @@ public class IndexController {
         return new ModelAndView("about", map);
     }
 
-    /*
-     * 项目页面
-     */
-    @GetMapping("/projects")
-    public ModelAndView blogDetails(Map map) {
-        List<ItemClassfy> itemClassfies = new ArrayList<>();
-        List<YnItems> ynItems = ynItemsService.list();
-        Map<String, List<YnItems>> retrunItemMap = ynItems.stream()
-                .collect(Collectors.groupingBy(YnItems::getItemClassfyName));
-        retrunItemMap.entrySet().stream()
-                .map(x -> {
-                    ItemClassfy itemClassfy = new ItemClassfy();
-                    itemClassfy.setYnItems(x.getValue());
-                    itemClassfy.setItemClassfyName(x.getKey());
-                    itemClassfies.add(itemClassfy);
-                    return x;
-                }).count();
-       /* Iterator<Map.Entry<Integer, List<YnItems>>> it = retrunItemMap.entrySet().iterator();
-        while(it.hasNext()){
-            Map.Entry<Integer, List<YnItems>> entry = it.next();
-            ItemClassfy itemClassfy = new ItemClassfy();
-            itemClassfy.setYnItems(entry.getValue());
-            itemClassfy.setItemClassfyName(entry.getKey());
-            itemClassfies.add(itemClassfy);
-        }*/
-        map.put("itemClassfies", itemClassfies);
-        return new ModelAndView("projects", map);
-    }
 
     /*
      * 友情链接页面
@@ -195,4 +167,6 @@ public class IndexController {
         map.put("ynLinks", ynLinks);
         return new ModelAndView("uselink", map);
     }
+
+
 }

@@ -5,7 +5,6 @@ import com.yuan.farmerwork.ynblog.domain.*;
 import com.yuan.farmerwork.ynblog.domain.pojo.EditorProperties;
 import com.yuan.farmerwork.ynblog.domain.pojo.SaveData;
 import com.yuan.farmerwork.ynblog.domain.pojo.SaveDocTageData;
-import com.yuan.farmerwork.ynblog.domain.pojo.TagsName;
 import com.yuan.farmerwork.ynblog.service.*;
 import com.yuan.farmerwork.ynblog.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -68,36 +68,43 @@
     <aside class="ss-layout-aside -left ss-card -soft-hidden">
         <div id="js-drawer" class="ss-toc -show">
             <div id="js-drawer-handle" class="drawer-handle -show">
-               <i class="fa fa-bars icon-menu" aria-hidden="true"></i>
-               <i class="fa fa-times icon-close" aria-hidden="true"></i>
+                <i class="fa fa-bars icon-menu" aria-hidden="true"></i>
+                <i class="fa fa-times icon-close" aria-hidden="true"></i>
             </div>
             <div class="drawer-body">
                 <div class="drawer-body">
                     <div class="headers" title="">
-                        Halo Framework
+                        <#if itemName?exists>
+                            ${itemName}
+                        </#if>
                     </div>
-                <div class="body">
-                    <ul class="leaf-section">
-                        <#list docCatalogs as docatax>
-                        <li class="item">
-                            <div class="link ${docatax.type}">
-                                <a title="${docatax.title}" href="${re.contextPath}/test/${docatax.docId}/${docatax.id}">${docatax.title}</a>
-                            </div>
-                        </li>
-                        </#list>
-                    </ul>
+                    <div class="body">
+                        <ul class="leaf-section">
+                            <#list itemsTitles as item>
+                                <li class="item">
+                                    <div class="link ${item.type}">
+                                        <a title="${item.itemsTitle}"
+                                           href="${re.contextPath}/itemsdtails/${itemsId}/${item.id}">${item.itemsTitle}</a>
+                                    </div>
+                                </li>
+                            </#list>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
     </aside>
     <main class="ss-layout-main -card">
         <div class="ss-meta">
             <div class="container">
                 <h1 class="title"> <#if detailsContent?exists>
-                        ${detailsContent.subhead}
+                        ${detailsContent.itemsTitle}
                     </#if></h1>
             </div>
-            <div class="meta">更新时间: 2018-09-12</div>
+            <div class="meta">
+                <#if detailsContent?exists>
+                    ${detailsContent.updateTime}
+                </#if>
+            </div>
         </div>
         <article class="typo">
             <#if detailsContent?exists>

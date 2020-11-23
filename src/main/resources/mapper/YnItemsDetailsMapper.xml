@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuan.farmerwork.ynblog.mapper.YnItemsDetailsMapper">
+
+    <select id="findItemsTitlesByItmsId" resultType="com.yuan.farmerwork.ynblog.domain.pojo.ItemsTitles">
+       SELECT
+        b.id id,
+        a.item_name itemsName,
+        b.items_title itemsTitle
+       FROM yn_items_details b
+       LEFT JOIN yn_items a ON b.items_id = a.id
+       WHERE a.has_document=1 AND b.items_id=#{0} AND b.is_delete=0 ORDER BY b.order_num
+   </select>
+
+
+</mapper>

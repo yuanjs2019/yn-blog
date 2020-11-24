@@ -77,6 +77,11 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     }
 
     @Override
+    public List<Blogs> findBlogTitlesByseriesCode(String seriesCode) {
+        return blogMapper.findBlogTitlesByseriesCode(seriesCode);
+    }
+
+    @Override
     public List<TagsName> findTagsByBlogId(Long blogId) {
         return blogMapper.findTagsByBlogId(blogId);
     }

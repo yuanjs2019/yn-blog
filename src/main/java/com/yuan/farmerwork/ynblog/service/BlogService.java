@@ -65,6 +65,12 @@ public interface BlogService extends IService<Blog> {
      */
     PageInfo<Blogs> findBlogByseriesCode(String seriesCode,Integer page);
 
+    /**
+     * 系列code查询文章标题列表数据
+     * @return
+     */
+    List<Blogs> findBlogTitlesByseriesCode(String seriesCode);
+
     List<TagsName> findTagsByBlogId(Long blogId);
 
     /**

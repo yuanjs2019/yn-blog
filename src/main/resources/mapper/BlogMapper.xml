@@ -111,6 +111,15 @@
        WHERE a.is_delete = 1 AND a.series_code =#{0}  ORDER BY a.id
     </select>
 
+    <select id="findBlogTitlesByseriesCode" resultMap="findSimpleMap">
+     SELECT
+        id,
+        title
+       FROM blog
+       WHERE is_delete = 1 AND series_code =#{0}  ORDER BY id
+    </select>
+
+
     <select id="findTagsByBlogId" resultType="com.yuan.farmerwork.ynblog.domain.pojo.TagsName">
         SELECT b.tag_name tagsName,b.tag_code tagsCode FROM yn_blog_tag a
         LEFT JOIN yn_tag b  ON a.tag_id = b.id WHERE a.blog_id =#{0}

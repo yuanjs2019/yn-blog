@@ -51,6 +51,12 @@ public interface BlogMapper extends BaseMapper<Blog> {
     List<Blogs> findBlogByseriesCode(String seriesCode);
 
     /**
+     * 系列code查询文章标题列表数据
+     * @return
+     */
+    List<Blogs> findBlogTitlesByseriesCode(String seriesCode);
+
+    /**
      * 查询最新10列表数据
      * @return
      */

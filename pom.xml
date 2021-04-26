@@ -19,7 +19,7 @@
         <mybatis.plus.version>3.3.1</mybatis.plus.version>
         <pagehelper.starter.version>1.2.12</pagehelper.starter.version>
         <thymeleaf.extras.version>3.0.1.RELEASE</thymeleaf.extras.version>
-        <commons.io.version>2.5</commons.io.version>
+        <commons.io.version>2.7</commons.io.version>
     </properties>
 
     <dependencies>
